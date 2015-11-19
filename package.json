@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "npm test",
-    "start" : "node server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,15 @@
   "bugs": {
     "url": "https://github.com/IBM-Bluemix/MEAN-Boilerplate/issues"
   },
-  "homepage": "https://github.com/IBM-Bluemix/MEAN-Boilerplate#readme"
+  "homepage": "https://github.com/IBM-Bluemix/MEAN-Boilerplate#readme",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "bootstrap": "^3.3.5",
+    "cfenv": "^1.0.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
