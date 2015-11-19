@@ -1,0 +1,28 @@
+{
+  "name": "mean-boilerplate-ibm-bluemix",
+  "version": "1.0.0",
+  "description": "MEAN (Mongo, Express, Angular, Node.js) Boilerplate for IBM Bluemix",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start" : "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Bluemix/MEAN-Boilerplate.git"
+  },
+  "keywords": [
+    "Node.js",
+    "mongo",
+    "angular",
+    "express",
+    "javascript",
+    "boilerplate"
+  ],
+  "author": "IBM Bluemix",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/IBM-Bluemix/MEAN-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/IBM-Bluemix/MEAN-Boilerplate#readme"
+}
