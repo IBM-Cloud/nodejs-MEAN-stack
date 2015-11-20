@@ -28,8 +28,8 @@
   "dependencies": {
     "angular": "^1.4.7",
     "bootstrap": "^3.3.5",
-    "cfenv": "^1.0.3",
-    "express": "^4.13.3",
+    "express": "4.12.x",
+    "cfenv": "1.0.x",
     "mongoose": "^4.2.6"
   },
   "devDependencies": {

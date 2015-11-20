@@ -2,7 +2,8 @@
 Simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and Node.js) on IBM Bluemix. This boilerplate is meant to be the right balance between getting started quick yet flexible enough to be customized to your liking.
 
 ### Getting Started
-Deploy to Bluemix in One Click:
+
+##### Deploy to Bluemix in One Click
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/MEAN-Boilerplate)
 
 ##### Local Development
@@ -13,7 +14,9 @@ Deploy to Bluemix in One Click:
 5. Open a browser to the link provided in the terminal prompt to view your app
 
 ##### Upload to Bluemix
-1. Sign-in to Bluemix
+1. Set API endpoint to Bluemix `cf api https://api.ng.bluemix.net`
+2. Sign-in to Bluemix `cf login`
+3. Add mongo service
 
 ### Local Development Requirements
 - [Node.js & NPM](https://nodejs.org/en/download/)
@@ -35,3 +38,6 @@ Deploy to Bluemix in One Click:
 
 ### Issues?
 File an [issue](https://github.com/IBM-Bluemix/MEAN-Boilerplate/issues).
+
+
+Example = https://github.com/sahat/hackathon-starter
