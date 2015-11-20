@@ -1,3 +1,6 @@
+<img src="https://dl.dropboxusercontent.com/s/vd367cadrk97zjg/MEAN%20Logo.jpg">
+
+
 # MEAN Boilerplate for IBM Bluemix
 Simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and Node.js) on IBM Bluemix. This boilerplate is meant to be the right balance between getting started quick yet flexible enough to be customized to your liking.
 
@@ -17,6 +20,10 @@ Simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and Node.js) 
 1. Set API endpoint to Bluemix `cf api https://api.ng.bluemix.net`
 2. Sign-in to Bluemix `cf login`
 3. Add mongo service
+
+### Modules
+- Mongoose, for MongoDB functions
+- [PassportJS](http://passportjs.org) for authentication, with over 300 authentication stragies to pick from.
 
 ### Local Development Requirements
 - [Node.js & NPM](https://nodejs.org/en/download/)
