@@ -3,18 +3,24 @@
 /********************************
 Dependencies
 ********************************/
-var express = require('express'),
-	mongoose = require('mongoose'),
-	cfenv = require('cfenv');
+var express = require('express'),// server middleware
+	mongoose = require('mongoose'),// MongoDB connection library
+	bodyParser = require('body-parser'),// parse HTTP requests
+	cfenv = require('cfenv');// Cloud Foundry Environment Variables
 
+/********************************
+Express Settings
+********************************/
 var app = express();
+app.use(bodyParser());
+app.use(express.static(__dirname + '/public'));
 
 /********************************
 Routing
 ********************************/
-app.use(express.static(__dirname + '/public'));
-
-
+app.get('/', function (req, res){
+   res.sendfile('index.html'); 
+});
 
 /********************************
 Ports

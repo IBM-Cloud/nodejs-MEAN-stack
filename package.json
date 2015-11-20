@@ -27,9 +27,10 @@
   "homepage": "https://github.com/IBM-Bluemix/MEAN-Boilerplate#readme",
   "dependencies": {
     "angular": "^1.4.7",
+    "body-parser": "^1.14.1",
     "bootstrap": "^3.3.5",
-    "express": "4.12.x",
     "cfenv": "1.0.x",
+    "express": "4.12.x",
     "mongoose": "^4.2.6"
   },
   "devDependencies": {
