@@ -1,4 +1,4 @@
-//Angular App
+//Angular App hello
 var app = angular.module('MEANapp', []);
 
 app.controller('MEANcntrl', function($scope, $http){
