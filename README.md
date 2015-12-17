@@ -13,6 +13,7 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 
 ##### Upload to Bluemix
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/MEAN-Boilerplate)
+
 1. Click 'Deploy to Bluemix' Button. Follow prompts to create application.
 2. While signed into Bluemix, click on 'Dashboard' in the top menu and then the application you just created
 3. Click on 'Add Service or API' and then the 'MongoDB by Compose' service.
