@@ -4,8 +4,8 @@
   "description": "MEAN (Mongo, Express, Angular, Node.js) Boilerplate for IBM Bluemix",
   "main": "server.js",
   "scripts": {
-    "test": "npm test",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "gulp serve"
   },
   "repository": {
     "type": "git",

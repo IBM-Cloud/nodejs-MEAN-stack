@@ -14,6 +14,7 @@ app/tests/coverage/
 .bower-*/
 .idea/
 coverage/
+data
 
 # Sublime editor
 # ==============
