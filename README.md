@@ -44,15 +44,5 @@ As an example of how to integrate an external API for authentication, the Twitte
  
 1. (Insert instructions here)
 
-
-### Features
-- Twitter API for Authentication
-- Create user in MongoDB instance
-- Login to site
-- Protected page
-
-### Issues?
-File an [issue](https://github.com/IBM-Bluemix/MEAN-Boilerplate/issues).
-
-
-Example = https://github.com/sahat/hackathon-starter
+### Problems or Questions?
+Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
