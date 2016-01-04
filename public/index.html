@@ -22,12 +22,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#/">Home</a></li>
+                    <li><a href="#/protected" ng-show="UserInfo.loggedIn">Protected Page</a></li>
                 </ul>
-                <!--TODO Add logic to change this value from login/logout based on status-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/account" ng-show="loggedIn">Account</a></li>
-                    <li><a href="#/login" ng-hide="loggedIn">Login</a></li>
-                    <li><a ng-click="logout()" ng-show="loggedIn">Logout</a></li>
+                    <li><a href="#/account" ng-show="UserInfo.loggedIn">Account</a></li>
+                    <li><a href="#/login" ng-hide="UserInfo.loggedIn">Login</a></li>
+                    <li><a ng-click="logout()" ng-show="UserInfo.loggedIn">Logout</a></li>
                 </ul>
             </div>
         </div>

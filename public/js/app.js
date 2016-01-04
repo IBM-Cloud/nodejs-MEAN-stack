@@ -4,10 +4,9 @@ var app = angular.module('MEANapp', ['ngRoute']);
  Controllers
  *********************************/
 
-app.controller('HeaderController', function($scope, $location){
+app.controller('HeaderController', function($scope, $location, UserInfo){
 
-    $scope.loggedIn = true; // TODO move this to $rootScope
-    $scope.username = 'Bob Sacamano'; // TODO Change this to actual username
+    $scope.UserInfo = UserInfo;
 
     $scope.logout = function(){
         $scope.loggedIn = false;
@@ -44,6 +43,23 @@ app.controller('AccountController', function(){
     };
 });
 
+app.controller('ProtectedController', function(){
+   // There should be some protected route function to prevent unauthorized views here
+});
+
+/*********************************
+ Factories
+ *********************************/
+
+// Global storage for user's information (make it accessible to other controllers and such)
+app.factory('UserInfo', function(){
+
+    return userInfo = {
+        loggedIn : true
+    };
+
+});
+
 /*********************************
  Routing
  *********************************/
@@ -74,6 +90,12 @@ app.config(function($routeProvider) {
         when('/createaccount', {
             templateUrl: 'views/create_account.html',
             controller: 'CreateAccountController'
+        }).
+
+        //Protected page
+        when('/protected', {
+            templateUrl: 'views/protected.html',
+            controller: 'ProtectedController'
         });
 
 });

@@ -31,11 +31,11 @@ app.use(express.static(__dirname + '/public'));
 // Detects local environment and connects to appropriate DB
 if(appEnv.isLocal == true){
 	mongoose.connect(config.mongoDB.local);
-	console.log('Your MongoDB is running at ' + config.mongoDB.local);
+		console.log('Your MongoDB is running at ' + config.mongoDB.local);
 }
 else if(appEnv.isLocal != true) {
 	mongoose.connect(config.mongoDB.production);
-	console.log('Your MongoDB is running at ' + config.mongoDB.production);
+		console.log('Your MongoDB is running at ' + config.mongoDB.production);
 }
 else{
 	console.log('Unable to connect to MongoDB. Check to ensure valid connection information in server/config.js');
