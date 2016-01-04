@@ -35,7 +35,6 @@ Problems or Questions? Find us on [Stack Overflow](https://stackoverflow.com/que
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
 
 ### To Be Documented
-- Deploy to Bluemix instructions (manually)
 - Application Structure (similar to https://github.com/sahat/hackathon-starter#project-structure)
 
 ### Features

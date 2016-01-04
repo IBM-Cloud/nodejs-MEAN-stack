@@ -1,3 +1,67 @@
 <!--login.html-->
-Login.html
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Login</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form class="form-horizontal" novalidate ng-submit="submitLogin()" name="loginForm">
+            <fieldset>
+                <legend>Local Account</legend>
+                <div class="form-group">
+                    <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                    <div class="col-lg-10">
+                        <input type="text"
+                               class="form-control"
+                               id="inputUsername"
+                               ng-model="username"
+                               required placeholder="Username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input type="password"
+                               class="form-control"
+                               id="inputPassword"
+                               ng-model="password"
+                               required
+                               placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <input class="btn btn-primary" type="submit" ng-disabled="loginForm.$invalid" value="Login">
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <h4>- Or -</h4>
+                    </div>
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button class="btn btn-default" ng-click="createAccount()">Create Account</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>External Services</legend>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">Login with Twitter</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
 <!--/login.html-->

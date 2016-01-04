@@ -1,20 +1,33 @@
 <!--home.html-->
 
 <div class="row">
-    <div class="col-md-12 page-header">
-        <h1>MEAN Boilerplate</h1>
+    <div class="jumbotron">
+        <h1>App Name</h1>
+        <p>Insert your important message here.</p>
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-6">
-        <h3>Get Started</h3>
-        <p>More content here...</p>
+        <h3>Get Started with Boilerplate</h3>
+        <div class="panel panel-danger" ng-show="!mongoStatus">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Error</strong></h3>
+            </div>
+            <div class="panel-body">
+                Could not connect to MongoDB. Check your node server logs (link) and documentation (link to README, link to Bluemix docs)
+            </div>
+        </div>
+        <p>See the <a href="https://github.com/IBM-Bluemix/MEAN-Boilerplate">README</a> for getting started documentation.</p>
     </div>
     <div class="col-lg-6">
-        <h3>Application Architecture</h3>
-        <p>More content here...</p>
+        <h3>Resources & Documentation</h3>
+        <ul>
+            <li><a href="">Bluemix Docs</a></li>
+            <li><a href="https://bootswatch.com/cosmo/">UI Theme Docs</a></li>
+            <li><a href="https://getbootstrap.com/css">Bootstrap UI Docs</a></li>
+        </ul>
     </div>
-
 </div>
 
 <!--/home.html-->
