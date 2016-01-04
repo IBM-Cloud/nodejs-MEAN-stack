@@ -3,14 +3,26 @@ var app = angular.module('MEANapp', ['ngRoute']);
 /*********************************
  Controllers
  *********************************/
+
+app.controller('HeaderController', function($scope, $location){
+
+    $scope.loggedIn = true; // TODO move this to $rootScope
+    $scope.username = 'Bob Sacamano'; // TODO Change this to actual username
+
+    $scope.logout = function(){
+        $scope.loggedIn = false;
+        $location.path('/');
+    };
+});
+
 app.controller('HomeController', function($scope){
-   $scope.mongoStatus = true;
+    $scope.mongoStatus = true;
 });
 
 app.controller('LoginController', function($scope, $location){
 
     $scope.submitlogin = function(){
-        // login code
+        // submit login form
     };
 
     $scope.createAccount = function(){
@@ -21,6 +33,14 @@ app.controller('LoginController', function($scope, $location){
 app.controller('CreateAccountController', function($scope){
     $scope.submitForm = function(){
         // submit form code
+        // make sure to sanitize/validate input prior to saving to DB!
+    };
+});
+
+app.controller('AccountController', function(){
+    $scope.deleteAccount = function(){
+        // delete account code
+        // confirm their choice BEFORE submitting changes
     };
 });
 
@@ -44,9 +64,15 @@ app.config(function($routeProvider) {
             controller: 'LoginController'
         }).
 
+        //Account page
+        when('/account', {
+            templateUrl: 'views/account.html',
+            controller: 'AccountController'
+        }).
+
         //Create Account page
         when('/createaccount', {
-            templateUrl: 'views/createaccount.html',
+            templateUrl: 'views/create_account.html',
             controller: 'CreateAccountController'
         });
 

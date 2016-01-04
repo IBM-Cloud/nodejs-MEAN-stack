@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body ng-app="MEANapp">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" ng-controller="HeaderController">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -21,11 +21,13 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="#/">Home</a></li>
                 </ul>
+                <!--TODO Add logic to change this value from login/logout based on status-->
                 <ul class="nav navbar-nav navbar-right">
-                    <!--TODO Add logic to change this value from login/logout based on status-->
-                    <li><a href="#/login">Login</a></li>
+                    <li><a href="#/account" ng-show="loggedIn">{{username}}</a></li>
+                    <li><a href="#/login" ng-hide="loggedIn">Login</a></li>
+                    <li><a ng-click="logout()" ng-show="loggedIn">Logout</a></li>
                 </ul>
             </div>
         </div>
