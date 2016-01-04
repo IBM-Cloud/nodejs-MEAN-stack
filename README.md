@@ -38,7 +38,8 @@ Problems or Questions? Find us on [Stack Overflow](https://stackoverflow.com/que
 - Application Structure (similar to https://github.com/sahat/hackathon-starter#project-structure)
 
 ### Twitter API
-<img src="https://g.twimg.com/Twitter_logo_blue.png" width="300">
+<img src="https://g.twimg.com/Twitter_logo_blue.png" width="100">
+
 As an example of how to integrate an external API for authentication, the Twitter API has been integrated into this boilerplate. To use this API, follow these steps to complete setup:
  
 1. (Insert instructions here)
