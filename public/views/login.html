@@ -7,6 +7,7 @@
     </div>
 </div>
 
+<!--TODO add error dialogue to appear when login fails server side-->
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -19,7 +20,7 @@
                         <input type="text"
                                class="form-control"
                                id="inputUsername"
-                               ng-model="username"
+                               ng-model="loginForm.username"
                                required placeholder="Username">
                     </div>
                 </div>
@@ -29,7 +30,7 @@
                         <input type="password"
                                class="form-control"
                                id="inputPassword"
-                               ng-model="password"
+                               ng-model="loginForm.password"
                                required
                                placeholder="Password">
                     </div>
@@ -42,13 +43,16 @@
                         <h4>- Or -</h4>
                     </div>
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default" ng-click="createAccount()">Create Account</button>
+                        <button class="btn btn-default" type="button" ng-click="createAccount()">Create Account</button>
                     </div>
+                    <!--TODO Password reset function?-->
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
+
+
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">

@@ -10,29 +10,70 @@ app.controller('HeaderController', function($scope, $location, UserInfo){
 
     $scope.logout = function(){
         $scope.loggedIn = false;
-        $location.path('/');
+        // TODO destroy session cookie here
+        $location.path('/'); // redirect to homepage after logout
     };
 });
 
 app.controller('HomeController', function($scope){
-    $scope.mongoStatus = true;
+    $scope.mongoStatus = true; // TODO replace with actual check of DB status
 });
 
-app.controller('LoginController', function($scope, $location){
+app.controller('LoginController', function($scope, $location, $http){
 
-    $scope.submitlogin = function(){
-        // submit login form
+    $scope.submitLogin = function(){
+
+        // Login request
+        $http({
+            method: 'POST',
+            url: '/account/login',
+            data: {
+                    'username': $scope.loginForm.username,
+                    'password': $scope.loginForm.password
+                }
+            })
+            .success(function(response){
+                alert('Success');
+                console.log(response);
+            })
+            .error(function(response){
+
+                // TODO send reason for error to page
+                alert('Fail');
+                console.log(response);
+            }
+        );
     };
 
     $scope.createAccount = function(){
-        $location.path('/createaccount');
+        $location.path('/account/create');
     }
 });
 
-app.controller('CreateAccountController', function($scope){
+app.controller('CreateAccountController', function($scope, $http, $location){
     $scope.submitForm = function(){
-        // submit form code
-        // make sure to sanitize/validate input prior to saving to DB!
+
+        $http({
+            method: 'POST',
+            url: '/account/create',
+            data: {
+                'username': $scope.newUser.username,
+                'password': $scope.newUser.password,
+                'name' : $scope.newUser.name,
+                'email' : $scope.newUser.email
+            }
+        })
+            .success(function(response){
+                alert(response); // TODO replace with proper message, same as used with error notification
+                $location.path('/account/login');
+            })
+            .error(function(response){
+                // TODO send reason for error to page
+                alert('Fail. See console for details');
+                console.log(response);
+            }
+        );
+
     };
 });
 
@@ -55,7 +96,7 @@ app.controller('ProtectedController', function(){
 app.factory('UserInfo', function(){
 
     return userInfo = {
-        loggedIn : true
+        loggedIn : false
     };
 
 });
@@ -75,7 +116,7 @@ app.config(function($routeProvider) {
         }).
 
         //Login page
-        when('/login', {
+        when('/account/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         }).
@@ -87,7 +128,7 @@ app.config(function($routeProvider) {
         }).
 
         //Create Account page
-        when('/createaccount', {
+        when('/account/create', {
             templateUrl: 'views/create_account.html',
             controller: 'CreateAccountController'
         }).
@@ -103,35 +144,3 @@ app.config(function($routeProvider) {
 /*********************************
  Database API
  *********************************/
-
-//$scope.addName = function(firstName){
-//    $scope.postData(firstName);
-//    $scope.newName = ''; //resets input
-//};
-//
-//$scope.getData = function(){
-//   //Get data from Node Server
-//   $http.get('...')
-//      .success(function(data){
-//         $scope.items = data;
-//         console.log('Success calling mongodb');
-//      })
-//      .error(function(data){
-//         alert('Error retrieving data. See console.');
-//         console.log(data);
-//      });
-//};
-//
-//$scope.postData = function(firstName){
-//   $http.post('...', {name: firstName})
-//      .success(function(data){
-//         $scope.getData(); //refresh page with updated data from DB
-//         console.log('Success posting to mongodb');
-//      })
-//      .error(function(data){
-//         alert('Error posting data. See console.');
-//         console.log(data);
-//      });
-//};
-
-//$scope.getData();

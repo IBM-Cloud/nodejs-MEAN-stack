@@ -29,6 +29,7 @@
     "body-parser": "^1.14.1",
     "cfenv": "1.0.x",
     "express": "4.12.x",
+    "express-validator": "^2.18.0",
     "mongoose": "^4.2.6",
     "passport": "^0.3.2"
   },

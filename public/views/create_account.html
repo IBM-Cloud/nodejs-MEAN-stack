@@ -7,29 +7,20 @@
     </div>
 </div>
 
+<!--TODO Insert flash message when get errors back grom server (empty fields, user already exists, etc.)-->
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <form class="form-horizontal" novalidate ng-submit="submitForm()" name="createAccountForm">
             <fieldset>
                 <div class="form-group">
-                    <label for="inputFirstName" class="col-lg-3 control-label">First Name</label>
+                    <label for="inputName" class="col-lg-3 control-label">Name</label>
                     <div class="col-lg-9">
                         <input type="text"
                                class="form-control"
-                               id="inputFirstName"
-                               ng-model="firstname"
-                               required placeholder="First Name">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputLastName" class="col-lg-3 control-label">Last Name</label>
-                    <div class="col-lg-9">
-                        <input type="text"
-                               class="form-control"
-                               id="inputLastName"
-                               ng-model="lastname"
-                               required placeholder="Last Name">
+                               id="inputName"
+                               ng-model="newUser.name"
+                               required placeholder="Name">
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,7 +29,7 @@
                         <input type="email"
                                class="form-control"
                                id="inputEmail"
-                               ng-model="ename"
+                               ng-model="newUser.email"
                                required placeholder="Email">
                     </div>
                 </div>
@@ -48,7 +39,7 @@
                         <input type="text"
                                class="form-control"
                                id="inputUsername"
-                               ng-model="username"
+                               ng-model="newUser.username"
                                required placeholder="Username">
                     </div>
                 </div>
@@ -58,7 +49,7 @@
                         <input type="password"
                                class="form-control"
                                id="inputPassword"
-                               ng-model="password"
+                               ng-model="newUser.password"
                                required
                                placeholder="Password">
                     </div>
