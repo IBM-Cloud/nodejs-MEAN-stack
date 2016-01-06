@@ -5,13 +5,14 @@
 Dependencies
 ********************************/
 var express = require('express'),// server middleware
-	mongoose = require('mongoose'),// MongoDB connection library
-	bodyParser = require('body-parser'),// parse HTTP requests
-	passport = require('passport'),// Authentication framework
+    mongoose = require('mongoose'),// MongoDB connection library
+    bodyParser = require('body-parser'),// parse HTTP requests
+    passport = require('passport'),// Authentication framework
     expressValidator = require('express-validator'), // validation tool for processing user input
+    bcrypt = require('bcrypt'),
 
 	cfenv = require('cfenv'),// Cloud Foundry Environment Variables
-	    appEnv = cfenv.getAppEnv(),// Grab environment variables
+    appEnv = cfenv.getAppEnv(),// Grab environment variables
 
 	config = require('./server/config'); // Your secret variables from config.js
 
@@ -46,7 +47,8 @@ else{
 // Account login
 app.post('/account/login', function(req,res){
 
-    // Validation prior to checking DB. Many validation/sanitize options here: https://github.com/ctavan/express-validator
+    // Validation prior to checking DB.
+    // Many validation/sanitize options here: https://github.com/ctavan/express-validator
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
     var errors = req.validationErrors(); // returns an object with results of validation check
@@ -56,11 +58,14 @@ app.post('/account/login', function(req,res){
         return;
     }
 
+    res.sendStatus(200);// Place holder until proper code is placed.
+
     // TODO check monogoDB for credentials
-    // TODO Return results (success or failure)
 
 });
 
+
+//TODO place these in the proper place. Inside of the scope they are referenced rewrites the schema every time.
 var accountSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
@@ -73,7 +78,7 @@ var accountSchema = new mongoose.Schema({
 var User = mongoose.model('User', accountSchema);
 
 
-// Account/User creation
+// Account creation
 app.post('/account/create', function(req,res){
 
     // Input validation
@@ -88,9 +93,14 @@ app.post('/account/create', function(req,res){
         return;
     }
 
+    // Hash user's password for safe-keeping in DB
+    var salt = bcrypt.genSaltSync(10),
+        hash = bcrypt.hashSync(req.body.password, salt);
+
+
     var user = new User({
         username: req.body.username,
-        password: req.body.password,
+        password: hash,
         email: req.body.email,
         name: req.body.name
     });
@@ -102,7 +112,10 @@ app.post('/account/create', function(req,res){
         }
         user.save(function(err) {
             if (err) {
-                return next(err);
+                console.log(err);
+                res.status(500).send('Error saving new account (database error). Please try again.');;
+                return;
+
             }
             res.status(200).send('Account created! Please login with your new account.');
         });

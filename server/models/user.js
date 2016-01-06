@@ -1,1 +1,1 @@
-// Example: https://github.com/sahat/hackathon-starter/blob/master/models/User.js
+// Good Example: https://github.com/sahat/hackathon-starter/blob/master/models/User.js
