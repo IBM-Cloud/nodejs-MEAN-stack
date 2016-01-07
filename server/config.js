@@ -7,6 +7,7 @@ var cfenv = require('cfenv'),// Cloud Foundry Environment Variables
     completeURL = undefined;
     productionDBname = 'mongo-boilerplate';
 
+    // Bluemix settings for a Compose.io MongoDB service. Change as needed.
     if(appEnv.isLocal != true){
         var appURI = appEnv.services['user-provided'][0]['credentials']['uri'],
             appPort = appEnv.services['user-provided'][0]['credentials']['port'],
@@ -16,10 +17,8 @@ var cfenv = require('cfenv'),// Cloud Foundry Environment Variables
     }
 
 module.exports = {
-
     mongoDB: {
         "local" : 'mongodb://localhost:27017',
         "production" : completeURL
     }
-
 };

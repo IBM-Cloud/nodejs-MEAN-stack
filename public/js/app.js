@@ -4,14 +4,26 @@ var app = angular.module('MEANapp', ['ngRoute']);
  Controllers
  *********************************/
 
-app.controller('HeaderController', function($scope, $location, UserInfo){
+app.controller('HeaderController', function($scope, $location, $http, UserInfo){
 
     $scope.UserInfo = UserInfo;
 
     $scope.logout = function(){
-        $scope.status = false;
-        // TODO destroy session cookie here
-        $location.path('/'); // redirect to homepage after logout
+
+        $http({
+            method: 'GET',
+            url: '/account/logout'
+        })
+            .success(function(response){
+                alert(response);
+                UserInfo.status = false;
+                $location.path('/');
+            })
+            .error(function(response){
+                alert(response);
+                $location.path('/account/login');
+            }
+        );
     };
 });
 
@@ -32,8 +44,9 @@ app.controller('LoginController', function($scope, $location, $http, UserInfo){
                     'password': $scope.loginForm.password
                 }
             })
-            .success(function(){
+            .success(function(response){
                 UserInfo.status = true; // TODO move this to the logout() in the factory object?
+                alert(response);
                 $location.path('/'); // TODO change redirect to correct place
             })
             .error(function(response){
@@ -100,8 +113,23 @@ app.controller('AccountController', function($scope, $location, UserInfo){
     };
 });
 
-app.controller('ProtectedController', function(){
-   // There should be some protected route function to prevent unauthorized views here
+app.controller('ProtectedController', function($scope, $location, $http){
+
+    //TODO populate this controller with something actually useful
+
+    $http({
+        method: 'GET',
+        url: '/protected'
+    })
+        .success(function(response){
+            $scope.secret = response;
+        })
+        .error(function(response){
+            alert(response);
+            $location.path('/account/login');
+        }
+    );
+
 });
 
 /*********************************

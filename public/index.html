@@ -22,13 +22,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#/">Home</a></li>
-                    <li><a href="#/user" ng-show="UserInfo.loggedIn">User Content</a></li>
+                    <li><a href="#/protected" ng-show="UserInfo.status">User Content</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!--TODO add user's name to the account link below-->
-                    <li><a href="#/account" ng-show="UserInfo.loggedIn">Account</a></li>
-                    <li><a href="#/account/login" ng-hide="UserInfo.loggedIn">Login</a></li>
-                    <li><a ng-click="logout()" ng-show="UserInfo.loggedIn">Logout</a></li>
+                    <li><a href="#/account" ng-show="UserInfo.status">Account</a></li>
+                    <li><a href="#/account/login" ng-hide="UserInfo.status">Login</a></li>
+                    <li><a href='' ng-click="logout()" ng-show="UserInfo.status">Logout</a></li>
                 </ul>
             </div>
         </div>
