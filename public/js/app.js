@@ -17,6 +17,7 @@ app.controller('HeaderController', function($scope, $location, $http, UserInfo){
             .success(function(response){
                 alert(response);
                 UserInfo.status = false;
+                UserInfo.user = {};
                 $location.path('/');
             })
             .error(function(response){
@@ -45,12 +46,11 @@ app.controller('LoginController', function($scope, $location, $http, UserInfo){
                 }
             })
             .success(function(response){
-                UserInfo.status = true; // TODO move this to the logout() in the factory object?
-                alert(response);
-                $location.path('/'); // TODO change redirect to correct place
+                UserInfo.status = true;
+                UserInfo.user = response;
+                $location.path('/');
             })
             .error(function(response){
-
                 // TODO send reason for error to page
                 alert('Fail');
                 console.log(response);
@@ -94,6 +94,8 @@ app.controller('AccountController', function($scope, $location, UserInfo){
 
     //TODO setup account update functionality
     //TODO setup account deletion functionality
+
+    $scope.user = UserInfo.user;
 
     $scope.deleteAccount = function(){
         var response = confirm("Are you sure you want to delete your account? This cannot be undone!");
@@ -140,24 +142,8 @@ app.controller('ProtectedController', function($scope, $location, $http){
 app.factory('UserInfo', function(){
 
     return user = {
-        userInfo : {
-            // TODO populate this variable with user's info when login occurs
-        },
-
-        status : false, // track the loggedin/out status of user
-
-        logout : function(){
-            // code that logs a user out. Should include:
-            // destroying session cookie in MongoDB
-            // updates 'status' and 'userInfo' keys above
-        },
-
-        login : function(){
-            // code that logs user into system
-            // creates session cookie
-            // updates 'status' and 'userInfo' keys above
-        }
-
+        user : {},
+        status : false // track the loggedin/out status of user
     };
 
 });

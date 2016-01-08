@@ -124,7 +124,12 @@ app.post('/account/login', function(req,res){
         if (!user) { return res.status(401).send('User not found. Please check your entry and try again.'); }
         req.logIn(user, function(err) { // creates session
             if (err) { return res.status(500).send('Error saving session.'); }
-            return res.status(200).send('You are logged in!');
+            var userInfo = {
+                username: user.username,
+                name : user.name,
+                email : user.email
+            };
+            return res.json(userInfo);
         });
     })(req, res);
 
@@ -186,7 +191,8 @@ function authorizeRequest(req, res, next) {
 }
 
 app.get('/protected', authorizeRequest, function(req, res){
-    res.send('Secret message');
+
+    res.json(req.user.name);
 });
 
 app.get('/account/logout', function(req,res){
