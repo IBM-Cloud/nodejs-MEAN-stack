@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "gulp serve"
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -39,8 +39,5 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.10.0",
-    "gulp": "^3.9.0",
-    "gulp-watch": "^4.3.5"
   }
 }
