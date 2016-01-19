@@ -3,6 +3,7 @@
 .DS_Store
 ehthumbs.db
 Thumbs.db
+.env
 
 # Node and related ecosystem
 # ==========================
