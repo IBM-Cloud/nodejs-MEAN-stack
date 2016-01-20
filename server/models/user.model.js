@@ -14,7 +14,6 @@ var accountSchema = new mongoose.Schema({
     password: {type: String, required: true},
     email: {type: String, required: true},
     name: {type: String, required: true},
-    twitter: String,
     tokens: Array
 });
 
