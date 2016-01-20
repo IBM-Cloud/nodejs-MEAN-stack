@@ -17,27 +17,31 @@ var express = require('express'),// server middleware
 	cfenv = require('cfenv'),// Cloud Foundry Environment Variables
     appEnv = cfenv.getAppEnv(),// Grab environment variables
 
-    User = require('./server/models/user.model'),
-	config = require('./server/config');
-
+    User = require('./server/models/user.model');
+    require('dotenv').load();// Reads .env file for loading into environment
 
 /********************************
  MongoDB Connection
  ********************************/
 
-// TODO Clean this up. It can be done better
+// TODO Clean this up?
 var sessionDB;
 
 // Detects local environment and connects to appropriate DB
 if(appEnv.isLocal == true){
-    mongoose.connect(config.mongoDB.local);
-    sessionDB = config.mongoDB.local;
-    console.log('Your MongoDB is running at ' + config.mongoDB.local);
+    mongoose.connect(process.env.LOCAL_MONGODB_URL);
+    sessionDB = process.env.LOCAL_MONGODB_URL;
+    console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
 else if(appEnv.isLocal != true) {
-    mongoose.connect(config.mongoDB.production);
-    sessionDB = config.mongoDB.production;
-    console.log('Your MongoDB is running at ' + config.mongoDB.production);
+    var appURI = appEnv.services['user-provided'][0]['credentials']['uri'],
+        appPort = appEnv.services['user-provided'][0]['credentials']['port'],
+        appUser = appEnv.services['user-provided'][0]['credentials']['user'],
+        appPassword = appEnv.services['user-provided'][0]['credentials']['password'];
+    var composeioURL = 'mongodb://' + appUser + ':' + appPassword + '@' + appURI + ':' + appPort + '/' + process.env.COMPOSEIO_MONGODB_NAME;
+    mongoose.connect(composeioURL);
+    sessionDB = composeioURL;
+    console.log('Your MongoDB is running at ' + composeioURL);
 }
 else{
     console.log('Unable to connect to MongoDB. Check to ensure valid connection information in server/config.js');
@@ -55,7 +59,7 @@ app.use(expressValidator()); // must go directly after bodyParser
 
 app.use(cookieParser());
 app.use(session({
-    secret: 'super secret session key',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     store: new MongoStore({
         url: sessionDB,
@@ -97,7 +101,6 @@ passport.use(new LocalStrategy(
         });
     }
 ));
-
 
 /********************************
  Routing
@@ -192,7 +195,7 @@ function authorizeRequest(req, res, next) {
 
 app.get('/protected', authorizeRequest, function(req, res){
 
-    res.json(req.user.name);
+    res.json(req.user.name); //TODO setup a meaningful response for the user.
 });
 
 app.get('/account/logout', function(req,res){
@@ -217,6 +220,3 @@ Ports
 app.listen(appEnv.port, appEnv.bind, function() {
   console.log("Node server running on " + appEnv.url);
 });
-
-// Make URL available to Gulp during development
-module.exports = appEnv;
