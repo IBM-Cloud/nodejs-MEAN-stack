@@ -5,7 +5,7 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 ### Getting Started
 
 ##### Local Development
-1. Install [local development requirements](#local-development-requirements) if not done so.
+1. Install [local development requirements](#local-development-requirements) as needed.
 2. Open application directory in your terminal and run `npm install`
 3. Create an environment variables file called `.env` (use `.env.example` as a guide) with your credentials. See comment in `.env.example` for what each credential is for.
 3. Start up your local MongoDB server (typically just `mongod`, see docs [here](https://docs.mongodb.org/getting-started/shell/installation/))
