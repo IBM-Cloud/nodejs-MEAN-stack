@@ -5,9 +5,9 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 ### Getting Started
 
 ##### Local Development
-1. Install local development requirements (listed below) if not done so.
-2. Open application directory in terminal and run `npm install`
-3. Create an `.env` file (use `.env.example` as a guide) with your credentials.
+1. Install [local development requirements](#local-development-requirements) if not done so.
+2. Open application directory in your terminal and run `npm install`
+3. Create an environment variables file called `.env` (use `.env.example` as a guide) with your credentials.
 3. Start up your local MongoDB server (typically just `mongod`, see docs [here](https://docs.mongodb.org/getting-started/shell/installation/))
 4. Run `node server.js` to start your app
 5. Open a browser to the link provided in the terminal prompt to view your app
@@ -15,16 +15,19 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 ##### Deploy to Bluemix
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/MEAN-Boilerplate)
 
-1. If you did not follow the 'Local Development' steps above, create an `.env` file (use `.env.example` as a guide) with your credentials.
-2. Click 'Deploy to Bluemix' Button. Follow prompts to create application.
-3. While signed into Bluemix, click on 'Dashboard' in the top menu and then the application you just created
-4. Click on 'Add Service or API' and then the 'MongoDB by Compose' service.
-5. You will need to add your Compose.io credentials since this is not a hosted service ([instructions](https://www.ng.bluemix.net/docs/services/MongoDBByCompose/index.html)).
-6. Follow the prompts to add the service and re-stage your application.
+Use the above button to deploy to boilerplate in 1 click!
+
+If you have download/customized the app, use this procedure to upload the app to Bluemix:
+1. Open a terminal prompt to the directory of your application.
+2. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
+3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
+4. Login to Bluemix via the command line: `cf login`
+5. Create the MongoDB service on Bluemix: `cf create-service mongodb 100 mean-mongo`
+5. Push your app to bluemix with `cf push`
 
 Your MEAN application is now running in the cloud!
 
-Problems or Questions? Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
+[Problems or Questions?](#problems-or-questions?) Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
 
 ### Modules
 - [Mongoose](https://github.com/Automattic/mongoose) for MongoDB functions
@@ -34,9 +37,6 @@ Problems or Questions? Find us on [Stack Overflow](https://stackoverflow.com/que
 - [Node.js & NPM](https://nodejs.org/en/download/)
 - [MongoDB](https://www.mongodb.org)
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
-
-### To Be Documented
-- Application Structure (similar to https://github.com/sahat/hackathon-starter#project-structure)
 
 ### Problems or Questions?
 Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.

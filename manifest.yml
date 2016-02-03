@@ -1,7 +1,7 @@
 ---
 applications:
 - name: mean
-  host: mean-${random-word}
+#  host: mean-${random-word}
   memory: 128M
   services:
   - mean-mongo
@@ -11,3 +11,4 @@ declared-services:
   mean-mongo:
     label: mongodb
     plan: 100
+

@@ -124,7 +124,7 @@ app.controller('ProtectedController', function($scope, $location, $http){
         url: '/protected'
     })
         .success(function(response){
-            $scope.secret = response;
+            $scope.message = response;
         })
         .error(function(response){
             alert(response);

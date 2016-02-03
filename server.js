@@ -25,18 +25,18 @@ var express = require('express'),// server middleware
  MongoDB Connection
  ********************************/
 
-// Detects environment and connects to appropriate DB
+ //Detects environment and connects to appropriate DB
 if(appEnv.isLocal == true){
     mongoose.connect(process.env.LOCAL_MONGODB_URL);
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
 else if(appEnv.isLocal != true) {
-    var bluemixMongoURL  = appEnv['mongodb-2.4'][0];
-    bluemixMongoURL = bluemixMongoURL.credentials.url;
-    mongoose.connect(bluemixMongoURL);
-    sessionDB = bluemixMongoURL;
-    console.log('Your MongoDB is running at ' + bluemixMongoURL);
+    var env = JSON.parse(process.env.VCAP_SERVICES),
+        mongoURL = env['mongodb-2.4'][0]['credentials']['url'];
+    mongoose.connect(mongoURL);
+    sessionDB = mongoURL;
+    console.log('Your MongoDB is running at ' + mongoURL);
 }
 else{
     console.log('Unable to connect to MongoDB.');
@@ -59,7 +59,8 @@ app.use(session({
     store: new MongoStore({
         url: sessionDB,
         autoReconnect: true
-    })
+    }),
+    saveUninitialized : false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
