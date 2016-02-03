@@ -1,6 +1,7 @@
 ---
 applications:
 - name: mean
+#TODO Remove this comment prior to publishing
 #  host: mean-${random-word}
   memory: 128M
   services:

@@ -7,7 +7,7 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 ##### Local Development
 1. Install [local development requirements](#local-development-requirements) if not done so.
 2. Open application directory in your terminal and run `npm install`
-3. Create an environment variables file called `.env` (use `.env.example` as a guide) with your credentials.
+3. Create an environment variables file called `.env` (use `.env.example` as a guide) with your credentials. See comment in `.env.example` for what each credential is for.
 3. Start up your local MongoDB server (typically just `mongod`, see docs [here](https://docs.mongodb.org/getting-started/shell/installation/))
 4. Run `node server.js` to start your app
 5. Open a browser to the link provided in the terminal prompt to view your app
@@ -18,6 +18,7 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 Use the above button to deploy to boilerplate in 1 click!
 
 If you have download/customized the app, use this procedure to upload the app to Bluemix:
+
 1. Open a terminal prompt to the directory of your application.
 2. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
 3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
