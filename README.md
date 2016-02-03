@@ -14,11 +14,11 @@ This is a simple boilerplate for the MEAN stack (MongoDB, Express, AngularJS and
 
 ##### Deploy to Bluemix
 
-**Option 1 (launch this app directly from this repo):**
+Option 1 (launch this app directly from this repo):
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/MEAN-Boilerplate)
 
-**Option 2 (deploy from your local machine)**
+Option 2 (deploy from your local machine):
 
 1. Open a terminal prompt to the directory of your application.
 2. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
