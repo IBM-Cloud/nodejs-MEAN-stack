@@ -10,6 +10,7 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
+        <h5></h5>
         <form class="form-horizontal" novalidate ng-submit="submitForm()" name="editAccountForm">
             <fieldset>
                 <div class="form-group">
@@ -18,9 +19,9 @@
                         <input type="text"
                                class="form-control"
                                id="inputName"
-                               ng-model="name"
+                               ng-model="user.name"
                                required
-                               placeholder="{{user.name}}">
+                               >
                     </div>
                 </div>
                 <div class="form-group">
@@ -29,9 +30,9 @@
                         <input type="text"
                                class="form-control"
                                id="inputEmail"
-                               ng-model="email"
+                               ng-model="user.email"
                                required
-                                placeholder="{{user.email}}">
+                               >
                     </div>
                 </div>
                 <div class="form-group">
@@ -40,8 +41,8 @@
                         <input type="text"
                                class="form-control"
                                id="inputUsername"
-                               ng-model="username"
-                               required placeholder="{{user.username}}">
+                               ng-model="user.username"
+                               >
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +53,7 @@
                                id="inputPassword"
                                ng-model="password"
                                required
-                               placeholder="">
+                                placholder="Change Password Here">
                     </div>
                 </div>
                 <div class="form-group">

@@ -13,6 +13,7 @@ var express = require('express'),// server middleware
     session = require('express-session'),
     MongoStore = require('connect-mongo/es5')(session), // store sessions in MongoDB for persistence
     bcrypt = require('bcrypt'), // middleware to encrypt/decrypt passwords
+    sessionDB,
 
 	cfenv = require('cfenv'),// Cloud Foundry Environment Variables
     appEnv = cfenv.getAppEnv(),// Grab environment variables
@@ -24,27 +25,21 @@ var express = require('express'),// server middleware
  MongoDB Connection
  ********************************/
 
-// TODO Clean this up?
-var sessionDB;
-
-// Detects local environment and connects to appropriate DB
+// Detects environment and connects to appropriate DB
 if(appEnv.isLocal == true){
     mongoose.connect(process.env.LOCAL_MONGODB_URL);
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
 else if(appEnv.isLocal != true) {
-    var appURI = appEnv.services['user-provided'][0]['credentials']['uri'],
-        appPort = appEnv.services['user-provided'][0]['credentials']['port'],
-        appUser = appEnv.services['user-provided'][0]['credentials']['user'],
-        appPassword = appEnv.services['user-provided'][0]['credentials']['password'];
-    var composeioURL = 'mongodb://' + appUser + ':' + appPassword + '@' + appURI + ':' + appPort + '/' + process.env.COMPOSEIO_MONGODB_NAME;
-    mongoose.connect(composeioURL);
-    sessionDB = composeioURL;
-    console.log('Your MongoDB is running at ' + composeioURL);
+    var bluemixMongoURL  = appEnv['mongodb-2.4'][0];
+    bluemixMongoURL = bluemixMongoURL.credentials.url;
+    mongoose.connect(bluemixMongoURL);
+    sessionDB = bluemixMongoURL;
+    console.log('Your MongoDB is running at ' + bluemixMongoURL);
 }
 else{
-    console.log('Unable to connect to MongoDB. Check to ensure valid connection information in server/config.js');
+    console.log('Unable to connect to MongoDB.');
 }
 
 
@@ -195,7 +190,7 @@ function authorizeRequest(req, res, next) {
 
 app.get('/protected', authorizeRequest, function(req, res){
 
-    res.json(req.user.name); //TODO setup a meaningful response for the user.
+    res.send("This is a protected route only visible to authenticated users.");
 });
 
 app.get('/account/logout', function(req,res){

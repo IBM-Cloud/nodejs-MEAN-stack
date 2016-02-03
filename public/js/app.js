@@ -1,4 +1,4 @@
-var app = angular.module('MEANapp', ['ngRoute']);
+var app = angular.module('MEANapp', ['ngRoute', 'ngCookies']);
 
 /*********************************
  Controllers
@@ -111,7 +111,7 @@ app.controller('AccountController', function($scope, $location, UserInfo){
     };
 
     $scope.updateAccount = function(){
-        // code to update their account
+        console.log('update submitted.')
     };
 });
 
@@ -139,12 +139,12 @@ app.controller('ProtectedController', function($scope, $location, $http){
  *********************************/
 
 // Global storage for user's information (make it accessible to other controllers and such)
-app.factory('UserInfo', function(){
+app.factory('UserInfo', function($cookieStore){
 
     return user = {
-        user : {},
-        status : false // track the loggedin/out status of user
-    };
+            user : {},
+            status : false // track the logged-in/out status of user
+        };
 
 });
 
