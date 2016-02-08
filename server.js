@@ -31,6 +31,7 @@ if(appEnv.isLocal == true){
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
+// Connect to MongoDB Service on Bluemix
 else if(appEnv.isLocal != true) {
     var env = JSON.parse(process.env.VCAP_SERVICES),
         mongoURL = env['mongodb-2.4'][0]['credentials']['url'];
@@ -105,7 +106,6 @@ app.get('/', function (req, res){
     res.sendfile('index.html');
 });
 
-// Account login
 app.post('/account/login', function(req,res){
 
     // Validation prior to checking DB. Many validation/sanitize options here: https://github.com/ctavan/express-validator

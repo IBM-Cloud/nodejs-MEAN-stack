@@ -1,23 +1,21 @@
-var app = angular.module('MEANapp', ['ngRoute', 'ngCookies']);
+var app = angular.module('MEANapp', ['ngRoute', 'ngStorage']);
 
 /*********************************
  Controllers
  *********************************/
 
-app.controller('HeaderController', function($scope, $location, $http, UserInfo){
+app.controller('HeaderController', function($scope, $localStorage, $sessionStorage, $location, $http){
 
-    $scope.UserInfo = UserInfo;
+    $scope.user = $localStorage;
 
     $scope.logout = function(){
-
         $http({
             method: 'GET',
             url: '/account/logout'
         })
             .success(function(response){
                 alert(response);
-                UserInfo.status = false;
-                UserInfo.user = {};
+                $localStorage.$reset();
                 $location.path('/');
             })
             .error(function(response){
@@ -28,11 +26,9 @@ app.controller('HeaderController', function($scope, $location, $http, UserInfo){
     };
 });
 
-app.controller('HomeController', function($scope){
-    $scope.mongoStatus = true; // TODO replace with actual check of DB status
-});
+app.controller('HomeController', function($scope, $localStorage, $sessionStorage){});
 
-app.controller('LoginController', function($scope, $location, $http, UserInfo){
+app.controller('LoginController', function($scope, $localStorage, $sessionStorage, $location, $http){
 
     $scope.submitLogin = function(){
 
@@ -46,14 +42,12 @@ app.controller('LoginController', function($scope, $location, $http, UserInfo){
                 }
             })
             .success(function(response){
-                UserInfo.status = true;
-                UserInfo.user = response;
+                $localStorage.status = true;
+                $localStorage.user = response;
                 $location.path('/');
             })
-            .error(function(response){
-                // TODO send reason for error to page
-                alert('Fail');
-                console.log(response);
+            .error(function(){
+                alert('Login failed on server side. Please try again.');
             }
         );
     };
@@ -63,7 +57,7 @@ app.controller('LoginController', function($scope, $location, $http, UserInfo){
     }
 });
 
-app.controller('CreateAccountController', function($scope, $http, $location){
+app.controller('CreateAccountController', function($scope, $localStorage, $sessionStorage, $http, $location){
     $scope.submitForm = function(){
 
         $http({
@@ -90,19 +84,19 @@ app.controller('CreateAccountController', function($scope, $http, $location){
     };
 });
 
-app.controller('AccountController', function($scope, $location, UserInfo){
+app.controller('AccountController', function($scope, $localStorage, $sessionStorage, $location){
 
     //TODO setup account update functionality
     //TODO setup account deletion functionality
 
-    $scope.user = UserInfo.user;
+    $scope.user = $localStorage.user;
 
     $scope.deleteAccount = function(){
         var response = confirm("Are you sure you want to delete your account? This cannot be undone!");
         if( response == true ){
             alert('Account deleted!!');
             // TODO insert code that actually deletes account
-            UserInfo.staus = false; // TODO this should be part of a logged out function that also destroys cookie
+            $location.staus = false; // TODO this should be part of a logged out function that also destroys cookie
             $location.path('/');
         }
 
@@ -117,8 +111,6 @@ app.controller('AccountController', function($scope, $location, UserInfo){
 
 app.controller('ProtectedController', function($scope, $location, $http){
 
-    //TODO populate this controller with something actually useful
-
     $http({
         method: 'GET',
         url: '/protected'
@@ -131,20 +123,6 @@ app.controller('ProtectedController', function($scope, $location, $http){
             $location.path('/account/login');
         }
     );
-
-});
-
-/*********************************
- Factories
- *********************************/
-
-// Global storage for user's information (make it accessible to other controllers and such)
-app.factory('UserInfo', function($cookieStore){
-
-    return user = {
-            user : {},
-            status : false // track the logged-in/out status of user
-        };
 
 });
 
