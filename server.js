@@ -17,17 +17,17 @@ var express = require('express'),// server middleware
     bcrypt = require('bcrypt'), // middleware to encrypt/decrypt passwords
     sessionDB,
 
-	cfenv = require('cfenv'),// Cloud Foundry Environment Variables
+    cfenv = require('cfenv'),// Cloud Foundry Environment Variables
     appEnv = cfenv.getAppEnv(),// Grab environment variables
 
     User = require('./server/models/user.model');
-    require('dotenv').load();// Reads .env file for loading into environment
+    require('dotenv').load();// Loads .env file into environment
 
 /********************************
  MongoDB Connection
  ********************************/
 
- //Detects environment and connects to appropriate DB
+//Detects environment and connects to appropriate DB
 if(appEnv.isLocal == true){
     mongoose.connect(process.env.LOCAL_MONGODB_URL);
     sessionDB = process.env.LOCAL_MONGODB_URL;
@@ -54,13 +54,14 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressValidator()); // must go directly after bodyParser
+app.use(cookieParser());
 
-// If the 'SESSION_SECRET' environment variable is missing, it sets it so that the app won't cause crash.
+// If the 'SESSION_SECRET' environment variable is missing, this creates one so that the app won't crash.
+// See docs here: https://github.com/expressjs/session#secret
 if(process.env.SESSION_SECRET == undefined){
     process.env['SESSION_SECRET'] = 'CQK9UGfHmSkjj3QTRAx4GzX7wcYGBn';
 }
 
-app.use(cookieParser());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
@@ -118,7 +119,7 @@ app.get('/', function (req, res){
 // Account login
 app.post('/account/login', function(req,res){
 
-    // Validation prior to checking DB.
+    // Validation prior to checking DB. Front end validation exists, but this functions as a fail-safe
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
 
@@ -128,6 +129,7 @@ app.post('/account/login', function(req,res){
         return;
     }
 
+    // Create session if username exists and password is correct
     passport.authenticate('local', function(err, user) {
         if (err) { return next(err); }
         if (!user) { return res.status(401).send('User not found. Please check your entry and try again.'); }
@@ -147,7 +149,7 @@ app.post('/account/login', function(req,res){
 // Account creation
 app.post('/account/create', function(req,res){
 
-    // 1. Input validation
+    // 1. Input validation. Front end validation exists, but this functions as a fail-safe
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('name', 'Name is required').notEmpty();
@@ -212,7 +214,7 @@ app.post('/account/delete', authorizeRequest, function(req, res){
 // Account update
 app.post('/account/update', authorizeRequest, function(req,res){
 
-    // 1. Input validation
+    // 1. Input validation. Front end validation exists, but this functions as a fail-safe
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('name', 'Name is required').notEmpty();
@@ -253,6 +255,7 @@ app.post('/account/update', authorizeRequest, function(req,res){
 // Account logout
 app.get('/account/logout', function(req,res){
 
+    // Destroys user's session
     if (!req.user)
         res.status(400).send('User not logged in.');
     else {
@@ -267,7 +270,7 @@ app.get('/account/logout', function(req,res){
     }
 });
 
-// Middleware to check if user is logged-in
+// Custom middleware to check if user is logged-in
 function authorizeRequest(req, res, next) {
     if (req.user) {
         next();
