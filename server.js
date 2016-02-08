@@ -90,7 +90,7 @@ passport.use(new LocalStrategy(
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
-            // validatePassword() method defined in user.model.js
+            // validatePassword method defined in user.model.js
             if (!user.validatePassword(password, user.password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
@@ -133,7 +133,6 @@ app.post('/account/login', function(req,res){
     })(req, res);
 
 });
-
 
 // Account creation
 app.post('/account/create', function(req,res){
@@ -180,18 +179,64 @@ app.post('/account/create', function(req,res){
 
 });
 
-// Middleware to check if user is logged-in
-function authorizeRequest(req, res, next) {
-    if (req.user) {
-        next();
-    } else {
-        res.status(401).send('Unauthorized. Please login.');
+app.post('/account/delete', authorizeRequest, function(req, res){
+
+    User.remove({ username: req.body.username }, function(err) {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Error deleting account.');
+            return;
+        }
+        req.session.destroy(function(err) {
+            if(err){
+                res.status(500).send('Error deleting account.');
+                console.log("Error deleting session: " + err);
+                return;
+            }
+            res.status(200).send('Account successfully deleted.');
+        });
+    });
+
+});
+
+app.post('/account/update', authorizeRequest, function(req,res){
+
+    // 1. Input validation
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('name', 'Name is required').notEmpty();
+    req.checkBody('email', 'Email is required and must be in a valid form').notEmpty().isEmail();
+
+    var errors = req.validationErrors(); // returns an object with results of validation check
+    if (errors) {
+        res.status(400).send(errors);
+        return;
     }
-}
 
-app.get('/protected', authorizeRequest, function(req, res){
+    // 2. Hash user's password for safe-keeping in DB
+    var salt = bcrypt.genSaltSync(10),
+        hash = bcrypt.hashSync(req.body.password, salt);
 
-    res.send("This is a protected route only visible to authenticated users.");
+    // 3. Store updated data in MongoDB
+    User.findOne({ username: req.body.username }, function(err, user) {
+        if (err) {
+            console.log(err);
+            return res.status(400).send('Error updating account.');
+        }
+        user.username = req.body.username;
+        user.password = hash;
+        user.email = req.body.email;
+        user.name = req.body.name;
+        user.save(function(err) {
+            if (err) {
+                console.log(err);
+                res.status(500).send('Error updating account.');
+                return;
+            }
+            res.status(200).send('Account updated.');
+        });
+    });
+
 });
 
 app.get('/account/logout', function(req,res){
@@ -208,6 +253,19 @@ app.get('/account/logout', function(req,res){
             res.status(200).send('Success logging user out!');
         });
     }
+});
+
+// Middleware to check if user is logged-in
+function authorizeRequest(req, res, next) {
+    if (req.user) {
+        next();
+    } else {
+        res.status(401).send('Unauthorized. Please login.');
+    }
+}
+
+app.get('/protected', authorizeRequest, function(req, res){
+    res.send("This is a protected route only visible to authenticated users.");
 });
 
 /********************************

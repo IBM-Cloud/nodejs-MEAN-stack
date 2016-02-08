@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <h5></h5>
-        <form class="form-horizontal" novalidate ng-submit="submitForm()" name="editAccountForm">
+        <form class="form-horizontal" novalidate ng-submit="updateAccount()" name="editAccountForm">
             <fieldset>
                 <div class="form-group">
                     <label for="inputName" class="col-lg-3 control-label">First Name</label>
@@ -19,7 +19,7 @@
                         <input type="text"
                                class="form-control"
                                id="inputName"
-                               ng-model="user.name"
+                               ng-model="formData.name"
                                required
                                >
                     </div>
@@ -30,7 +30,7 @@
                         <input type="text"
                                class="form-control"
                                id="inputEmail"
-                               ng-model="user.email"
+                               ng-model="formData.email"
                                required
                                >
                     </div>
@@ -41,7 +41,7 @@
                         <input type="text"
                                class="form-control"
                                id="inputUsername"
-                               ng-model="user.username"
+                               ng-model="formData.username"
                                >
                     </div>
                 </div>
@@ -59,7 +59,8 @@
                 <div class="form-group">
                     <div class="col-lg-9 col-lg-offset-3">
                         <input class="btn btn-primary" type="submit" ng-disabled="editAccountForm.$invalid" value="Update Account">
-                        <button class="btn btn-danger" ng-click="deleteAccount()">Delete Account</button>
+                        <br/><br/>
+                        <button class="btn btn-danger" type="button" ng-click="deleteAccount()">Delete Account</button>
                     </div>
                 </div>
             </fieldset>

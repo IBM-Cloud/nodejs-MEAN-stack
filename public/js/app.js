@@ -6,15 +6,16 @@ var app = angular.module('MEANapp', ['ngRoute', 'ngStorage']);
 
 app.controller('HeaderController', function($scope, $localStorage, $sessionStorage, $location, $http){
 
+    // Set local scope to persisted user data
     $scope.user = $localStorage;
 
+    // Logout function
     $scope.logout = function(){
         $http({
             method: 'GET',
             url: '/account/logout'
         })
-            .success(function(response){
-                alert(response);
+            .success(function(){
                 $localStorage.$reset();
                 $location.path('/');
             })
@@ -30,6 +31,7 @@ app.controller('HomeController', function($scope, $localStorage, $sessionStorage
 
 app.controller('LoginController', function($scope, $localStorage, $sessionStorage, $location, $http){
 
+    // Login submission
     $scope.submitLogin = function(){
 
         // Login request
@@ -42,6 +44,7 @@ app.controller('LoginController', function($scope, $localStorage, $sessionStorag
                 }
             })
             .success(function(response){
+                // $localStorage persists data in browser's local storage (prevents data loss on page refresh)
                 $localStorage.status = true;
                 $localStorage.user = response;
                 $location.path('/');
@@ -52,14 +55,16 @@ app.controller('LoginController', function($scope, $localStorage, $sessionStorag
         );
     };
 
+    // Redirect to account creation page
     $scope.createAccount = function(){
         $location.path('/account/create');
     }
 });
 
 app.controller('CreateAccountController', function($scope, $localStorage, $sessionStorage, $http, $location){
-    $scope.submitForm = function(){
 
+    // Create account
+    $scope.submitForm = function(){
         $http({
             method: 'POST',
             url: '/account/create',
@@ -71,41 +76,65 @@ app.controller('CreateAccountController', function($scope, $localStorage, $sessi
                 }
             })
             .success(function(response){
-                alert(response); // TODO replace with proper message, same as used with error notification
+                alert(response);
                 $location.path('/account/login');
             })
             .error(function(response){
-                // TODO send reason for error to page
-                alert('Fail. See console for details');
-                console.log(response);
+                alert(response);
             }
         );
 
     };
 });
 
-app.controller('AccountController', function($scope, $localStorage, $sessionStorage, $location){
+app.controller('AccountController', function($scope, $localStorage, $sessionStorage, $http, $location){
 
-    //TODO setup account update functionality
-    //TODO setup account deletion functionality
+    // Create static copy of user data for form usage (otherwise any temporary changes will bind permanently to $localStorage)
+    $scope.formData = $.extend(true,{},$localStorage.user);
 
-    $scope.user = $localStorage.user;
-
-    $scope.deleteAccount = function(){
-        var response = confirm("Are you sure you want to delete your account? This cannot be undone!");
-        if( response == true ){
-            alert('Account deleted!!');
-            // TODO insert code that actually deletes account
-            $location.staus = false; // TODO this should be part of a logged out function that also destroys cookie
-            $location.path('/');
-        }
-
-        // delete account code
-        // confirm their choice BEFORE submitting changes
+    // Update user's account with new data
+    $scope.updateAccount = function(){
+        $http({
+            method: 'POST',
+            url: '/account/update',
+            data: {
+                'username': $scope.formData.username,
+                'password': $scope.password,
+                'name' : $scope.formData.name,
+                'email' : $scope.formData.email
+            }
+        })
+            .success(function(response){
+                $localStorage.user = $scope.formData;
+                alert(response);
+            })
+            .error(function(response){
+                alert(response);
+            }
+        );
     };
 
-    $scope.updateAccount = function(){
-        console.log('update submitted.')
+    // Delete user's account
+    $scope.deleteAccount = function(){
+        var response = confirm("Are you sure you want to delete your account? This cannot be undone!");
+        if(response == true){
+            $http({
+                method: 'POST',
+                url: '/account/delete',
+                data: {
+                    'username': $scope.formData.username
+                }
+            })
+                .success(function(response){
+                    $localStorage.$reset();
+                    alert(response);
+                    $location.path('/');
+                })
+                .error(function(response){
+                    alert(response);
+                }
+            );
+        }
     };
 });
 
