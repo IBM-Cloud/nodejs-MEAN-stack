@@ -42,3 +42,6 @@ Your MEAN application is now running in the cloud!
 
 ### Problems or Questions?
 Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
+
+### License
+See LICENSE.MD for license information.

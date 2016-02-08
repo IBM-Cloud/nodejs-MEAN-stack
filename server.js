@@ -1,3 +1,5 @@
+// See LICENSE.MD for license information.
+
 'use strict';
 
 /********************************
@@ -102,13 +104,16 @@ passport.use(new LocalStrategy(
 /********************************
  Routing
  ********************************/
+
+// Home
 app.get('/', function (req, res){
     res.sendfile('index.html');
 });
 
+// Account login
 app.post('/account/login', function(req,res){
 
-    // Validation prior to checking DB. Many validation/sanitize options here: https://github.com/ctavan/express-validator
+    // Validation prior to checking DB.
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
 
@@ -171,7 +176,6 @@ app.post('/account/create', function(req,res){
                 console.log(err);
                 res.status(500).send('Error saving new account (database error). Please try again.');
                 return;
-
             }
             res.status(200).send('Account created! Please login with your new account.');
         });
@@ -179,6 +183,7 @@ app.post('/account/create', function(req,res){
 
 });
 
+//Account deletion
 app.post('/account/delete', authorizeRequest, function(req, res){
 
     User.remove({ username: req.body.username }, function(err) {
@@ -199,6 +204,7 @@ app.post('/account/delete', authorizeRequest, function(req, res){
 
 });
 
+// Account update
 app.post('/account/update', authorizeRequest, function(req,res){
 
     // 1. Input validation
@@ -239,6 +245,7 @@ app.post('/account/update', authorizeRequest, function(req,res){
 
 });
 
+// Account logout
 app.get('/account/logout', function(req,res){
 
     if (!req.user)
@@ -264,6 +271,7 @@ function authorizeRequest(req, res, next) {
     }
 }
 
+// Protected route requiring authorization to access.
 app.get('/protected', authorizeRequest, function(req, res){
     res.send("This is a protected route only visible to authenticated users.");
 });

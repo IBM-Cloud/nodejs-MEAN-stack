@@ -1,3 +1,5 @@
+// See LICENSE.MD for license information.
+
 var app = angular.module('MEANapp', ['ngRoute', 'ngStorage']);
 
 /*********************************
@@ -50,7 +52,7 @@ app.controller('LoginController', function($scope, $localStorage, $sessionStorag
                 $location.path('/');
             })
             .error(function(){
-                alert('Login failed on server side. Please try again.');
+                alert('Login failed. Check username/password and try again.');
             }
         );
     };
