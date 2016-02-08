@@ -8,7 +8,7 @@ applications:
   env:
     NODE_ENV: cloud-foundry
 declared-services:
-  mean-mongo1:
+  mean-mongo:
     label: mongodb
     plan: 100
 
