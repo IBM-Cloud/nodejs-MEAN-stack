@@ -1,15 +1,14 @@
 ---
 applications:
 - name: mean
-#TODO Remove this comment prior to publishing
-#  host: mean-${random-word}
-  memory: 128M
+  host: mean-${random-word}
+  memory: 256M
   services:
   - mean-mongo
   env:
     NODE_ENV: cloud-foundry
 declared-services:
-  mean-mongo:
+  mean-mongo1:
     label: mongodb
     plan: 100
 

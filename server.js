@@ -55,6 +55,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressValidator()); // must go directly after bodyParser
 
+// If the 'SESSION_SECRET' environment variable is missing, it sets it so that the app won't cause crash.
+if(process.env.SESSION_SECRET == undefined){
+    process.env['SESSION_SECRET'] = 'CQK9UGfHmSkjj3QTRAx4GzX7wcYGBn';
+}
+
 app.use(cookieParser());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -282,3 +287,9 @@ Ports
 app.listen(appEnv.port, appEnv.bind, function() {
   console.log("Node server running on " + appEnv.url);
 });
+
+
+/********************************
+ Deployment Tracker
+ ********************************/
+require("cf-deployment-tracker-client").track();
