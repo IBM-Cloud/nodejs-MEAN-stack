@@ -85,4 +85,4 @@ This data is collected from the VCAP_APPLICATION environment variable in IBM Blu
 To remove [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) from your application, comment out or delete the final line of the `server.js` file.
 
 ## License
-See LICENSE.MD for license information.
+See [LICENSE.MD](https://github.com/IBM-Bluemix/Nodejs-MEAN-Stack/blob/master/LICENSE.md) for license information.
