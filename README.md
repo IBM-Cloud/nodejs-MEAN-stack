@@ -29,7 +29,7 @@ This application uses the [MongoDB experimental service](https://www.ng.bluemix.
 
 Option 1 (launch this app directly from this repo):
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/MEAN-Stack)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/Nodejs-MEAN-Stack)
 
 Option 2 (deploy from your local machine):
 
