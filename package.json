@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBM-Bluemix/MEAN-Boilerplate.git"
+    "url": "https://github.com/IBM-Bluemix/MEAN-Stack.git"
   },
   "keywords": [
     "Node.js",
@@ -22,9 +22,9 @@
   "author": "IBM Bluemix",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/IBM-Bluemix/MEAN-Boilerplate/issues"
+    "url": "https://github.com/IBM-Bluemix/MEAN-Stack/issues"
   },
-  "homepage": "https://github.com/IBM-Bluemix/MEAN-Boilerplate#readme",
+  "homepage": "https://github.com/IBM-Bluemix/MEAN-Stack",
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.1",
