@@ -88,20 +88,5 @@ If you are not sure what your application name is, use this command to print you
 
 For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
 
-## Privacy Notice
-<If you are using the deployment tracker, you must include a privacy notice to let the user know that we are collecting deployment data.>
-
-The 'AppName' sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
-
-* Application Name (application_name)
-* Space ID (space_id)
-* Application Version (application_version)
-* Application URIs (application_uris)
-
-This data is collected from the VCAP_APPLICATION environment variable in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
-
-#### Remove Deployment Tracker
-To remove [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) from your application, comment out or delete the final line of the `server.js` file.
-
 ## License
 See [LICENSE.MD](https://github.com/IBM-Bluemix/Nodejs-MEAN-Stack/blob/master/LICENSE.md) for license information.

@@ -294,9 +294,3 @@ Ports
 app.listen(appEnv.port, appEnv.bind, function() {
   console.log("Node server running on " + appEnv.url);
 });
-
-
-/********************************
- Deployment Tracker
- ********************************/
-require("cf-deployment-tracker-client").track();
