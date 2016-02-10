@@ -53,13 +53,13 @@ Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) 
 
 | File                               | Description                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| [manifest.yml](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/manifest.yml) | File that defines Bluemix deployment peramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
-| [.env.example](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
-| [server.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
-| [/server](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/server) | Folder for files used by the Node.js server
-| [server/modes/user.model.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server/models/user.model.js) | Model for storing users in MongoDB
-| [/public](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/public) | Folder for files delivered to users, such as html and css files
-| [/public/js/app.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/public/js/app.js) | Angular application for manipulating and rendering data in browser
+| [**manifest.yml**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/manifest.yml) | File that defines Bluemix deployment peramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
+| [**.env.example**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
+| [**server.js**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
+| [**/server**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/server) | Folder for files used by the Node.js server
+| [/server/modes/**user.model.js**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server/models/user.model.js) | Model for storing users in MongoDB
+| [**/public**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/public) | Folder for files delivered to users, such as html and css files
+| [/public/js/**app.js**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/public/js/app.js) | Angular application for manipulating and rendering data in browser
 
 
 ## Application
