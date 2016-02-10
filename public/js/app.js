@@ -17,7 +17,7 @@ app.controller('HeaderController', function($scope, $localStorage, $sessionStora
             method: 'GET',
             url: '/account/logout'
         })
-            .success(function(){
+            .success(function(response){
                 alert(response);
                 $localStorage.$reset();
                 $location.path('/');
