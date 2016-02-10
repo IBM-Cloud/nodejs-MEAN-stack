@@ -2,11 +2,17 @@
 
 <img src="https://dl.dropboxusercontent.com/s/vd367cadrk97zjg/MEAN%20Logo.jpg">
 
-This is a basic boilerplate for the MEAN stack (MongoDB, Express, AngularJS and Node.js) on IBM Bluemix. The app features basic user account creation and sessions.
+This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Bluemix](http://bluemix.net).
 
 This application uses the [MongoDB experimental service](https://www.ng.bluemix.net/docs/#services/MongoDB/index.html#MongoDB) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on Bluemix.
 
-#### Important Node.js Modules
+#### Features
+- MVC project structure
+- Create, edit and delete user accounts
+- Authentication with username/password
+- Protected routes that can only be accessed by authenticated users
+- Bootstrap CSS framework & [Cosmo theme](https://bootswatch.com/cosmo/)
+- HTTPS built-in if deployed to [Bluemix](#deploy-to-bluemix)
 - [Mongoose](https://github.com/Automattic/mongoose) for MongoDB interactions.
 - [PassportJS](http://passportjs.org) for authentication, with over 300 authentication strategies to pick from.
 
@@ -42,6 +48,19 @@ Option 2 (deploy from your local machine):
 
 #### Problems or Questions?
 Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
+
+## Critical Files & Folders
+
+| File                               | Description                                                  |
+| ---------------------------------- | ------------------------------------------------------------ |
+| [manifest.yml](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/manifest.yml) | File that defines Bluemix deployment peramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
+| [.env.example](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
+| [server.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
+| [/server](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/server) | Folder for files used by the Node.js server
+| [server/modes/user.model.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server/models/user.model.js) | Model for storing users in MongoDB
+| [/public](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/public) | Folder for files delivered to users, such as html and css files
+| [/public/js/app.js](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/public/js/app.js) | Angular application for manipulating and rendering data in browser
+
 
 ## Application
 - **MongoDB** stores user account information and persists sessions (so that a server crash does not log out all users.)

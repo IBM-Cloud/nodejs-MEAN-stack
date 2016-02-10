@@ -1,3 +1,5 @@
+# Files listed here will not be deployed to Bluemix. Similar to .gitignore function
+
 node_modules/
 .DS_Store
 data
