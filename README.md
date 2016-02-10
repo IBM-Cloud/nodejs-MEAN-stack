@@ -16,7 +16,7 @@ This application uses the [MongoDB experimental service](https://www.ng.bluemix.
 - [Mongoose](https://github.com/Automattic/mongoose) for MongoDB interactions.
 - [PassportJS](http://passportjs.org) for authentication, with over 300 authentication strategies to pick from.
 
-## Local Development Requirements
+## Application Requirements
 - [Node.js & NPM](https://nodejs.org/en/download/)
 - [MongoDB](https://www.mongodb.org)
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
@@ -24,7 +24,7 @@ This application uses the [MongoDB experimental service](https://www.ng.bluemix.
 ## Getting Started
 ##### Local Application Development
 1. Clone or download this repo onto your machine.
-2. Install [local development requirements](#local-development-requirements) if not done so already.
+2. Install [application requirements](#application-requirements) if not done so already.
 3. Open application directory in your terminal and run `npm install`
 4. Rename `.env.example` file to `.env`.  Edit the contents as needed, at a minimum adding your own SESSION_SECRET.
 5. Start up your local MongoDB server (typically just `mongod`, see docs [here](https://docs.mongodb.org/getting-started/shell/installation/))
