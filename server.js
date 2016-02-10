@@ -28,13 +28,13 @@ var express = require('express'),// server middleware
  ********************************/
 
 //Detects environment and connects to appropriate DB
-if(appEnv.isLocal == true){
+if(appEnv.isLocal){
     mongoose.connect(process.env.LOCAL_MONGODB_URL);
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
 // Connect to MongoDB Service on Bluemix
-else if(appEnv.isLocal != true) {
+else if(!appEnv.isLocal) {
     var env = JSON.parse(process.env.VCAP_SERVICES),
         mongoURL = env['mongodb-2.4'][0]['credentials']['url'];
     mongoose.connect(mongoURL);
@@ -50,26 +50,30 @@ else{
 Express Settings
 ********************************/
 var app = express();
+app.enable('trust proxy');
+// Use SSL connection provided by Bluemix. No setup required besides redirecting all HTTP requests to HTTPS
+if (!appEnv.isLocal) {
+    app.use(function (req, res, next) {
+        if (req.secure) // returns true is protocol = https
+            next();
+        else
+            res.redirect('https://' + req.headers.host + req.url);
+    });
+}
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressValidator()); // must go directly after bodyParser
 app.use(cookieParser());
-
-// If the 'SESSION_SECRET' environment variable is missing, this creates one so that the app won't crash.
-// See docs here: https://github.com/expressjs/session#secret
-if(process.env.SESSION_SECRET == undefined){
-    process.env['SESSION_SECRET'] = 'CQK9UGfHmSkjj3QTRAx4GzX7wcYGBn';
-}
-
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
     resave: true,
     store: new MongoStore({
         url: sessionDB,
         autoReconnect: true
     }),
-    saveUninitialized : false
+    saveUninitialized : false,
+    cookie: { secure: true }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
