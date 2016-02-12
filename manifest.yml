@@ -11,4 +11,3 @@ declared-services:
   mean-mongo:
     label: mongodb
     plan: 100
-
