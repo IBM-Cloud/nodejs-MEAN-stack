@@ -5,6 +5,7 @@ ehthumbs.db
 Thumbs.db
 .env
 TODO.md
+mongodb.conf
 
 # Node and related ecosystem
 # ==========================
@@ -41,7 +42,7 @@ local.properties
 # =========
 .c9/
 data/
-mongod
+mongodb.conf
 
 # Visual Studio
 # =========
