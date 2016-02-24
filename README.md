@@ -39,12 +39,13 @@ Option 1 (launch this app directly from this repo):
 
 Option 2 (deploy from your local machine):
 
-1. Open a terminal prompt to the directory of your application.
-2. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
-3. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
-4. Login to Bluemix via the command line: `cf login`
-5. Create the MongoDB service on Bluemix: `cf create-service mongodb 100 mean-mongo`
-6. Push your app to bluemix with `cf push`
+1. Clone or download this repo onto your machine.
+2. Open a terminal prompt to the directory of your application.
+3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
+4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
+5. Login to Bluemix via the command line: `cf login`
+6. Create the MongoDB service on Bluemix: `cf create-service mongodb 100 mean-mongo`
+7. Push your app to bluemix with `cf push`
 
 #### Problems or Questions?
 Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
@@ -53,7 +54,7 @@ Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) 
 
 | File                               | Description                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| [**manifest.yml**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/manifest.yml) | File that defines Bluemix deployment peramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
+| [**manifest.yml**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/manifest.yml) | File that defines Bluemix deployment paramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
 | [**.env.example**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
 | [**server.js**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/blob/master/server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
 | [**/server**](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/tree/master/server) | Folder for files used by the Node.js server
