@@ -30,8 +30,6 @@ if(appEnv.isLocal){
     require('dotenv').load();// Loads .env file into environment
 }
 
-console.log(JSON.parse(process.env.VCAP_SERVICES));
-
 /********************************
  MongoDB Connection
  ********************************/
