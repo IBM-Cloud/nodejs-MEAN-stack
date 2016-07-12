@@ -21,7 +21,16 @@ var express = require('express'),// server middleware
     appEnv = cfenv.getAppEnv(),// Grab environment variables
 
     User = require('./server/models/user.model');
+    
+
+/********************************
+Local Environment Variables
+ ********************************/
+if(appEnv.isLocal){
     require('dotenv').load();// Loads .env file into environment
+}
+
+console.log(JSON.parse(process.env.VCAP_SERVICES));
 
 /********************************
  MongoDB Connection
@@ -36,7 +45,7 @@ if(appEnv.isLocal){
 // Connect to MongoDB Service on Bluemix
 else if(!appEnv.isLocal) {
     var env = JSON.parse(process.env.VCAP_SERVICES),
-        mongoURL = env['mongodb-2.4'][0]['credentials']['url'];
+        mongoURL = env['mongodb'][0]['credentials']['url'];
     mongoose.connect(mongoURL);
     sessionDB = mongoURL;
     console.log('Your MongoDB is running at ' + mongoURL);

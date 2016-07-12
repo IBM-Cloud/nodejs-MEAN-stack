@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "MEAN (Mongo, Express, Angular, Node.js) Boilerplate for IBM Bluemix",
   "main": "server.js",
+  "engines" : { "node" : ">=4.4.5" },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
