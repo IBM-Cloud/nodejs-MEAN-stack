@@ -166,7 +166,7 @@ app.post('/account/create', function(req,res){
     req.checkBody('name', 'Name is required').notEmpty();
     req.checkBody('email', 'Email is required and must be in a valid form').notEmpty().isEmail();
 
-    var errors = req.validationErrors(); // returns an object with results of validation check
+    var errors = req.validationErrors(); // returns an array with results of validation check
     if (errors) {
         res.status(400).send(errors);
         return;

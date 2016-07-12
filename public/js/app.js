@@ -83,7 +83,36 @@ app.controller('CreateAccountController', function($scope, $localStorage, $sessi
                 $location.path('/account/login');
             })
             .error(function(response){
-                alert(response);
+                // When a string is returned
+                if(typeof response === 'string'){
+                    alert(response);
+                }
+                // When array is returned
+                else if (Array.isArray(response)){
+                    // More than one message returned in the array
+                    if(response.length > 1){
+                        var messages = [],
+                            allMessages;
+                        for (var i = response.length - 1; i >= 0; i--) {
+                            messages.push(response[i]['msg']);
+                            if(response.length == 0){
+                                allMessages = messages.join(", ");
+                                alert(allMessages);
+                                console.error(response);
+                            }
+                        }
+                    }
+                    // Single message returned in the array
+                    else{
+                        alert(response[0]['msg']);
+                        console.error(response);
+                    }
+                }
+                // When something else is returned
+                else{
+                    console.error(response);
+                    alert("See console for error.");
+                }
             }
         );
 
@@ -112,7 +141,36 @@ app.controller('AccountController', function($scope, $localStorage, $sessionStor
                 alert(response);
             })
             .error(function(response){
-                alert(response);
+                // When a string is returned
+                if(typeof response === 'string'){
+                    alert(response);
+                }
+                // When an array is returned
+                else if (Array.isArray(response)){
+                    // More than one message returned in the array
+                    if(response.length > 1){
+                        var messages = [],
+                            allMessages;
+                        for (var i = response.length - 1; i >= 0; i--) {
+                            messages.push(response[i]['msg']);
+                            if(response.length == 0){
+                                allMessages = messages.join(", ");
+                                alert(allMessages);
+                                console.error(response);
+                            }
+                        }
+                    }
+                    // Single message returned in the array
+                    else{
+                        alert(response[0]['msg']);
+                        console.error(response);
+                    }
+                }
+                // When something else is returned
+                else{
+                    console.error(response);
+                    alert("See console for error.");
+                }
             }
         );
     };
