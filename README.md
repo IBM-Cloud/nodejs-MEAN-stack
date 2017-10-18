@@ -44,7 +44,7 @@ Option 2 (deploy from your local machine):
 3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
 4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
 5. Login to Bluemix via the command line: `cf login`
-6. Create the instance of Compose for MongoDB on Bluemix: `cf create-service compose-for-mongodb Standard todo-db`
+6. Create the instance of Compose for MongoDB on Bluemix: `cf create-service compose-for-mongodb Standard mongodb`
 7. Push your app to bluemix with `cf push`
 8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
