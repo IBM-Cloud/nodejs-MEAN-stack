@@ -1,6 +1,6 @@
-# MEAN Boilerplate Overview
+# MEAN Stack on Bluemix
 
-<img src="https://dl.dropboxusercontent.com/s/vd367cadrk97zjg/MEAN%20Logo.jpg">
+<img src="ReadME-Images/mean.jpeg">
 
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Bluemix](http://bluemix.net).
 
@@ -46,9 +46,13 @@ Option 2 (deploy from your local machine):
 5. Login to Bluemix via the command line: `cf login`
 6. Create the instance of Compose for MongoDB on Bluemix: `cf create-service compose-for-mongodb Standard todo-db`
 7. Push your app to bluemix with `cf push`
+8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
+
+
 
 #### Problems or Questions?
-Find us on [Stack Overflow](https://stackoverflow.com/questions/tagged/bluemix) and tag your question with 'bluemix'.
+
+Create a [GitHub issue](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/issues/new) for questions or problems occurs using this demo. 
 
 ## Critical Files & Folders
 
