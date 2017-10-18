@@ -1,13 +1,13 @@
 ---
 applications:
-- name: mean
+- name: mean-stack
   host: mean-${random-word}
   memory: 256M
   services:
-  - mean-mongo
+  - mongodb
   env:
     NODE_ENV: cloud-foundry
 declared-services:
-  mean-mongo:
-    label: mongodb
-    plan: 100
+  mongodb:
+    label: compose-for-mongodb
+    plan: Standard

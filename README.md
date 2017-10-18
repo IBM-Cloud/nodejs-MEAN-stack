@@ -4,9 +4,7 @@
 
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Bluemix](http://bluemix.net).
 
-Live Example: [https://nodejs-mean-stack.mybluemix.net](https://nodejs-mean-stack.mybluemix.net)
-
-This application uses the [MongoDB experimental service](https://www.ng.bluemix.net/docs/#services/MongoDB/index.html#MongoDB) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on Bluemix.
+This application uses the [Compose for MongoDB service](https://console.bluemix.net/catalog/services/compose-for-mongodb) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on Bluemix.
 
 #### Features
 - MVC project structure
@@ -46,7 +44,7 @@ Option 2 (deploy from your local machine):
 3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
 4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
 5. Login to Bluemix via the command line: `cf login`
-6. Create the MongoDB service on Bluemix: `cf create-service mongodb 100 mean-mongo`
+6. Create the instance of Compose for MongoDB on Bluemix: `cf create-service compose-for-mongodb Standard todo-db`
 7. Push your app to bluemix with `cf push`
 
 #### Problems or Questions?

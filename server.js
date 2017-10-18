@@ -30,7 +30,7 @@ if(appEnv.isLocal){
     require('dotenv').load();// Loads .env file into environment
 }
 
-/********************************
+/******************************** 
  MongoDB Connection
  ********************************/
 
@@ -42,15 +42,29 @@ if(appEnv.isLocal){
 }
 // Connect to MongoDB Service on Bluemix
 else if(!appEnv.isLocal) {
-    var env = JSON.parse(process.env.VCAP_SERVICES),
-        mongoURL = env['mongodb'][0]['credentials']['url'];
-    mongoose.connect(mongoURL);
-    sessionDB = mongoURL;
-    console.log('Your MongoDB is running at ' + mongoURL);
+    var mongoDbUrl, mongoDbOptions = {};
+    var mongoDbCredentials = appEnv.services["compose-for-mongodb"][0].credentials;
+    var ca = [new Buffer(mongoDbCredentials.ca_certificate_base64, 'base64')];
+    mongoDbUrl = mongoDbCredentials.uri;
+    mongoDbOptions = {
+      mongos: {
+        ssl: true,
+        sslValidate: true,
+        sslCA: ca,
+        poolSize: 1,
+        reconnectTries: 1
+      }
+    };
+
+    console.log("Your MongoDB is running at ", mongoDbUrl);
+    mongoose.connect(mongoDbUrl, mongoDbOptions); // connect to our database
+    sessionDB = mongoDbUrl;
 }
 else{
     console.log('Unable to connect to MongoDB.');
 }
+
+
 
 
 /********************************
