@@ -42,11 +42,12 @@ Option 2 (deploy from your local machine):
 1. Clone or download this repo onto your machine.
 2. Open a terminal prompt to the directory of your application.
 3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
-4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `cf api https://api.ng.bluemix.net `
-5. Login to Bluemix via the command line: `cf login`
-6. Create the instance of Compose for MongoDB on Bluemix: `cf create-service compose-for-mongodb Standard mongodb`
-7. Push your app to bluemix with `cf push`
-8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
+4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `bx api https://api.ng.bluemix.net `
+5. Login to Bluemix via the command line: `bx login`
+6. Target your Bluemix ORG and SPACE  `bx target -o ORG -s SPACE`
+7. Create the instance of Compose for MongoDB on Bluemix:  `bx cf create-service compose-for-mongodb Standard mongodb`
+8. Push your app to bluemix with `bx cf push`
+9. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
 
 
@@ -82,13 +83,13 @@ Please create a pull request with your desired changes.
 The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
 
   ```
-  $ cf logs <application-name> --recent
+  $ bx cf logs <application-name> --recent
   ```
 
 If you are not sure what your application name is, use this command to print your application name(s):
 
   ```
-  $ cf apps
+  $ bx cf apps
   ```
 
 For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
