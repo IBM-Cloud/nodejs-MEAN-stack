@@ -1,10 +1,10 @@
-# MEAN Stack on Bluemix
+# Modern Web Application using MEAN stack
 
-<img src="ReadME-Images/mean.jpeg">
+<img src="ReadME-Images/Architecture.png">
 
-This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Bluemix](http://bluemix.net).
+This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Cloud](http://bluemix.net).
 
-This application uses the [Compose for MongoDB service](https://console.bluemix.net/catalog/services/compose-for-mongodb) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on Bluemix.
+This application uses the [Compose for MongoDB service](https://console.bluemix.net/catalog/services/compose-for-mongodb) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on IBM Cloud.
 
 #### Features
 - MVC project structure
@@ -12,7 +12,7 @@ This application uses the [Compose for MongoDB service](https://console.bluemix.
 - Authentication with username/password
 - Protected routes that can only be accessed by authenticated users
 - Bootstrap CSS framework & [Cosmo theme](https://bootswatch.com/cosmo/)
-- HTTPS built-in if deployed to [Bluemix](#deploy-to-bluemix)
+- HTTPS built-in if deployed to [IBM Cloud](#deploy-to-bluemix)
 - [Mongoose](https://github.com/Automattic/mongoose) for MongoDB interactions.
 - [PassportJS](http://passportjs.org) for authentication, with over 300 authentication strategies to pick from.
 
@@ -31,7 +31,7 @@ This application uses the [Compose for MongoDB service](https://console.bluemix.
 6. Run `node server.js` to start your app
 7. Open a browser to the link provided in the terminal prompt to view your app
 
-##### Deploy to Bluemix
+##### Deploy to IBM Cloud
 
 Option 1 (launch this app directly from this repo):
 
@@ -41,12 +41,12 @@ Option 2 (deploy from your local machine):
 
 1. Clone or download this repo onto your machine.
 2. Open a terminal prompt to the directory of your application.
-3. If you don't have a Bluemix account, [create a free one here](https://console.ng.bluemix.net/registration/).
-4. Set your Cloud Foundry CLI tool's API endpoint to Bluemix: `bx api https://api.ng.bluemix.net `
-5. Login to Bluemix via the command line: `bx login`
-6. Target your Bluemix ORG and SPACE  `bx target -o ORG -s SPACE`
-7. Create the instance of Compose for MongoDB on Bluemix:  `bx cf create-service compose-for-mongodb Standard mongodb`
-8. Push your app to bluemix with `bx cf push`
+3. If you don't have an account, [create a free one here](https://console.ng.bluemix.net/registration/).
+4. Set your Cloud Foundry CLI tool's API endpoint to: `bx api https://api.ng.bluemix.net `
+5. Login to your account via the command line: `bx login`
+6. Target your account ORG and SPACE  `bx target -o ORG -s SPACE`
+7. Create the instance of Compose for MongoDB on IBM Cloud:  `bx cf create-service compose-for-mongodb Standard mongodb`
+8. Push your app to IBM Cloud with `bx cf push`
 9. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
 
@@ -59,7 +59,7 @@ Create a [GitHub issue](https://github.com/IBM-Bluemix/nodejs-MEAN-stack/issues/
 
 | File                               | Description                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| [**manifest.yml**](./manifest.yml) | File that defines Bluemix deployment paramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
+| [**manifest.yml**](./manifest.yml) | File that defines deployment paramaters. [More info here](https://www.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest)
 | [**.env.example**](./.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
 | [**server.js**](./server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
 | [**/server**](./server) | Folder for files used by the Node.js server
@@ -80,7 +80,7 @@ There is also generous commenting throughout the application which helps explain
 Please create a pull request with your desired changes.
 
 ## Troubleshooting
-The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
+The primary source of debugging information for your app is the logs. To see them, run the following command using the Cloud Foundry CLI:
 
   ```
   $ bx cf logs <application-name> --recent
@@ -92,7 +92,7 @@ If you are not sure what your application name is, use this command to print you
   $ bx cf apps
   ```
 
-For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
+For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the documentation.
 
 ## License
 See [LICENSE.MD](https://github.com/IBM-Bluemix/Nodejs-MEAN-Stack/blob/master/LICENSE.md) for license information.
