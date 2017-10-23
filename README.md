@@ -1,10 +1,10 @@
 # Modern Web Application using MEAN stack
 
-<img src="ReadME-Images/Architecture.png">
-
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Cloud](http://bluemix.net).
 
 This application uses the [Compose for MongoDB service](https://console.bluemix.net/catalog/services/compose-for-mongodb) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on IBM Cloud.
+
+<img src="ReadME-Images/Architecture.png">
 
 #### Features
 - MVC project structure
