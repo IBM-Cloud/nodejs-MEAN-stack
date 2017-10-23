@@ -18,7 +18,7 @@ This application uses the [Compose for MongoDB service](https://console.bluemix.
 
 ## Application Requirements
 - [Node.js & NPM](https://nodejs.org/en/download/)
-- [MongoDB](https://www.mongodb.org)
+- [Compose for MongoDB database](https://console.bluemix.net/catalog/compose-for-mongodb)
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
 
 ## Getting Started
