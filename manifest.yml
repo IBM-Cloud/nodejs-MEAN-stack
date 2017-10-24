@@ -4,10 +4,10 @@ applications:
   host: mean-${random-word}
   memory: 256M
   services:
-  - mongodb
+  - mean-starter-mongodb
   env:
     NODE_ENV: cloud-foundry
 declared-services:
-  mongodb:
+  mean-starter-mongodb:
     label: compose-for-mongodb
     plan: Standard

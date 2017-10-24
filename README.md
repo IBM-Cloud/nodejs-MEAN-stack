@@ -45,7 +45,7 @@ Option 2 (deploy from your local machine):
 4. Set your Cloud Foundry CLI tool's API endpoint to: `bx api https://api.ng.bluemix.net `
 5. Login to your account via the command line: `bx login`
 6. Target your account ORG and SPACE  `bx target -o ORG -s SPACE`
-7. Create the instance of Compose for MongoDB on IBM Cloud:  `bx cf create-service compose-for-mongodb Standard mongodb`
+7. Create the instance of Compose for MongoDB on IBM Cloud:  `bx cf create-service compose-for-mongodb Standard mean-starter-mongodb`
 8. Push your app to IBM Cloud with `bx cf push`
 9. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
