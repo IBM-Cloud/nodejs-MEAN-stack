@@ -42,11 +42,11 @@ Option 2 (deploy from your local machine):
 1. Clone or download this repo onto your machine.
 2. Open a terminal prompt to the directory of your application.
 3. If you don't have an account, [create a free one here](https://console.ng.bluemix.net/registration/).
-4. Set your Cloud Foundry CLI tool's API endpoint to: `bx api https://api.ng.bluemix.net `
-5. Login to your account via the command line: `bx login`
-6. Target your account ORG and SPACE  `bx target -o ORG -s SPACE`
-7. Create the instance of Compose for MongoDB on IBM Cloud:  `bx cf create-service compose-for-mongodb Standard mean-starter-mongodb`
-8. Push your app to IBM Cloud with `bx cf push`
+4. Set your Cloud Foundry CLI tool's API endpoint to: `ibmcloud api https://api.ng.bluemix.net `
+5. Login to your account via the command line: `ibmcloud login`
+6. Target your account ORG and SPACE  `ibmcloud target -o ORG -s SPACE`
+7. Create the instance of Compose for MongoDB on IBM Cloud:  `ibmcloud cf create-service compose-for-mongodb Standard mean-starter-mongodb`
+8. Push your app to IBM Cloud with `ibmcloud cf push`
 9. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
 
@@ -80,16 +80,16 @@ There is also generous commenting throughout the application which helps explain
 Please create a pull request with your desired changes.
 
 ## Troubleshooting
-The primary source of debugging information for your app is the logs. To see them, run the following command using the Cloud Foundry CLI:
+The primary source of debugging information for your app is the logs. To see them, run the following Cloud Foundry command using the IBM Cloud CLI:
 
   ```
-  $ bx cf logs <application-name> --recent
+  $ ibmcloud cf logs <application-name> --recent
   ```
 
 If you are not sure what your application name is, use this command to print your application name(s):
 
   ```
-  $ bx cf apps
+  $ ibmcloud cf apps
   ```
 
 For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the documentation.
