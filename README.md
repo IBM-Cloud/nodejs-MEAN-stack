@@ -4,7 +4,7 @@ This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.or
 
 This application uses the [Compose for MongoDB service](https://console.bluemix.net/catalog/services/compose-for-mongodb) and [Node.js runtime](https://www.ng.bluemix.net/docs/starters/nodejs/index.html) on IBM Cloud.
 
-<img src="ReadME-Images/Architecture.png">
+<img src="ReadME-Images/Architecture2.png">
 
 #### Features
 - MVC project structure
