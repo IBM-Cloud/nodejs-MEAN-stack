@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/IBM-Bluemix/Nodejs-MEAN-Stack",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^2.0.0",
     "body-parser": "^1.14.1",
     "cf-deployment-tracker-client": "0.0.8",
     "cfenv": "1.0.x",
