@@ -13,7 +13,7 @@ var express = require('express'),// server middleware
     expressValidator = require('express-validator'), // validation tool for processing user input
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-    MongoStore = require('connect-mongo/es5')(session), // store sessions in MongoDB for persistence
+    MongoStore = require('connect-mongo')(session), // store sessions in MongoDB for persistence
     bcrypt = require('bcrypt'), // middleware to encrypt/decrypt passwords
     sessionDB,
 
@@ -40,20 +40,16 @@ if(appEnv.isLocal){
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
-// Connect to MongoDB Service on Bluemix
+// Connect to MongoDB Service on IBM Cloud
 else if(!appEnv.isLocal) {
     var mongoDbUrl, mongoDbOptions = {};
-    var mongoDbCredentials = appEnv.services["compose-for-mongodb"][0].credentials;
-    var ca = [new Buffer(mongoDbCredentials.ca_certificate_base64, 'base64')];
-    mongoDbUrl = mongoDbCredentials.uri;
+    var mongoDbCredentials = appEnv.services["databases-for-mongodb"][0].credentials.connection.mongodb;
+    var ca = Buffer.from(mongoDbCredentials.certificate.certificate_base64, 'base64');
+    mongoDbUrl = mongoDbCredentials.composed[0];
     mongoDbOptions = {
-      mongos: {
-        ssl: true,
-        sslValidate: true,
-        sslCA: ca,
+        useNewUrlParser: true,
         poolSize: 1,
         reconnectTries: 1
-      }
     };
 
     console.log("Your MongoDB is running at ", mongoDbUrl);
@@ -72,7 +68,7 @@ Express Settings
 ********************************/
 var app = express();
 app.enable('trust proxy');
-// Use SSL connection provided by Bluemix. No setup required besides redirecting all HTTP requests to HTTPS
+// Use SSL connection provided by IBM Cloud. No setup required besides redirecting all HTTP requests to HTTPS
 if (!appEnv.isLocal) {
     app.use(function (req, res, next) {
         if (req.secure) // returns true is protocol = https
@@ -89,10 +85,7 @@ app.use(cookieParser());
 app.use(session({
     secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
     resave: true,
-    store: new MongoStore({
-        url: sessionDB,
-        autoReconnect: true
-    }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     saveUninitialized : false,
     cookie: { secure: true }
 }));
