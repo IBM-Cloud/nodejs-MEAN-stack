@@ -31,6 +31,8 @@ This application uses the [IBM Cloud Databases for MongoDB service](https://clou
 6. Run `node server.js` to start your app
 7. Open a browser to the link provided in the terminal prompt to view your app
 
+Note that the code assumes a secured connection to MongoDB using SSL and a certificate. This way you can run the app locally but connect to IBM Cloud Databases for MongoDB.
+
 ##### Deploy to IBM Cloud
 
 Option 1 (launch this app directly from this repo):

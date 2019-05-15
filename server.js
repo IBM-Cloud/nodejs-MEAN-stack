@@ -36,7 +36,18 @@ if(appEnv.isLocal){
 
 //Detects environment and connects to appropriate DB
 if(appEnv.isLocal){
-    mongoose.connect(process.env.LOCAL_MONGODB_URL);
+    var ca = Buffer.from(process.env.CERTIFICATE_BASE64, 'base64');
+    mongoDbOptions = {
+        useNewUrlParser: true,  
+        ssl: true,
+        sslValidate: true,
+        sslCA: ca
+  };
+    mongoose.connect(process.env.LOCAL_MONGODB_URL, mongoDbOptions)
+        .then(res => console.log(res))
+        .catch(function (reason) {
+            console.log('Unable to connect to the mongodb instance. Error: ', reason);
+        });
     sessionDB = process.env.LOCAL_MONGODB_URL;
     console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
 }
@@ -48,12 +59,22 @@ else if(!appEnv.isLocal) {
     mongoDbUrl = mongoDbCredentials.composed[0];
     mongoDbOptions = {
         useNewUrlParser: true,
+        ssl: true,
+        sslValidate: true,
+        sslCA: ca,
         poolSize: 1,
         reconnectTries: 1
     };
 
     console.log("Your MongoDB is running at ", mongoDbUrl);
-    mongoose.connect(mongoDbUrl, mongoDbOptions); // connect to our database
+    // connect to our database
+    mongoose.Promise = global.Promise;
+    mongoose.connect(mongoDbUrl, mongoDbOptions)
+        .then(res => console.log(res))
+        .catch(function (reason) {
+            console.log('Unable to connect to the mongodb instance. Error: ', reason);
+        });
+    //mongoose.connect(mongoDbUrl, mongoDbOptions); // connect to our database
     sessionDB = mongoDbUrl;
 }
 else{
@@ -305,6 +326,6 @@ app.get('/protected', authorizeRequest, function(req, res){
 /********************************
 Ports
 ********************************/
-app.listen(appEnv.port, appEnv.bind, function() {
+app.listen(process.env.PORT || appEnv.port, process.env.BIND || appEnv.bind, function() {
   console.log("Node server running on " + appEnv.url);
 });
