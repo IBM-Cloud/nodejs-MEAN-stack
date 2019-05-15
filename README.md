@@ -22,16 +22,19 @@ This application uses the [IBM Cloud Databases for MongoDB service](https://clou
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
 
 ## Getting Started
-##### Local Application Development
+##### Run the application locally
 1. Clone or download this repo onto your machine.
-2. Install [application requirements](#application-requirements) if not done so already.
-3. Open application directory in your terminal and run `npm install`
-4. Rename `.env.example` file to `.env`.  Edit the contents as needed, at a minimum adding your own SESSION_SECRET.
-5. Start up your local MongoDB server (typically just `mongod`, see docs [here](https://docs.mongodb.org/getting-started/shell/installation/))
-6. Run `node server.js` to start your app
-7. Open a browser to the link provided in the terminal prompt to view your app
+1. Install [application requirements](#application-requirements) if not done so already.
+1. Open application directory in your terminal and run `npm install`
+1. If you don't have an account, [create a free one here](https://cloud.ibm.com).
+1. Login to your account via the command line: `ibmcloud login`
+1. Target your account ORG and SPACE  `ibmcloud target --cf`
+1. Create the instance of Compose for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
+1. Rename `.env.example` file to `.env` and run `ibmcloud cf service-key mean-starter-mongodb "Service credentials-1"` for MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
+1. Run `node server.js` to start your app
+1. Open a browser to the link provided in the terminal prompt to view your app
 
-Note that the code assumes a secured connection to MongoDB using SSL and a certificate. This way you can run the app locally but connect to IBM Cloud Databases for MongoDB.
+> Note that the code assumes a secured connection to MongoDB using SSL and a certificate. This way you can run the app locally but connect to IBM Cloud Databases for MongoDB.
 
 An alternative way of local development is using the provided Dockerfile.
 
@@ -52,11 +55,9 @@ Option 2 (deploy from your local machine):
 7. Push your app to IBM Cloud with `ibmcloud cf push`
 8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
-
-
 #### Problems or Questions?
 
-Create a [GitHub issue](https://github.com/IBM-Cloud/nodejs-MEAN-stack/issues/new) for questions or problems occurs using this demo. 
+Create a [GitHub issue](https://github.com/IBM-Cloud/nodejs-MEAN-stack/issues/new) for questions or problems occurs using this demo.
 
 ## Critical Files & Folders
 
