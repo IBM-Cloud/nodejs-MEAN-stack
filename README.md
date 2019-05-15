@@ -33,6 +33,8 @@ This application uses the [IBM Cloud Databases for MongoDB service](https://clou
 
 Note that the code assumes a secured connection to MongoDB using SSL and a certificate. This way you can run the app locally but connect to IBM Cloud Databases for MongoDB.
 
+An alternative way of local development is using the provided Dockerfile.
+
 ##### Deploy to IBM Cloud
 
 Option 1 (launch this app directly from this repo):
