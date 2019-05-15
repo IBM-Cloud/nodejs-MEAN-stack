@@ -4,6 +4,8 @@ This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.or
 
 This application uses the [IBM Cloud Databases for MongoDB service](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Node.js runtime](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-nodejs_runtime) on IBM Cloud.
 
+The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-mean-stack).
+
 <img src="ReadME-Images/Architecture.png">
 
 #### Features
