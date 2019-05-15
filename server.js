@@ -21,7 +21,7 @@ var express = require('express'),// server middleware
     appEnv = cfenv.getAppEnv(),// Grab environment variables
 
     User = require('./server/models/user.model');
-    
+
 
 /********************************
 Local Environment Variables
@@ -30,7 +30,7 @@ if(appEnv.isLocal){
     require('dotenv').load();// Loads .env file into environment
 }
 
-/******************************** 
+/********************************
  MongoDB Connection
  ********************************/
 
@@ -38,18 +38,18 @@ if(appEnv.isLocal){
 if(appEnv.isLocal){
     var ca = Buffer.from(process.env.CERTIFICATE_BASE64, 'base64');
     mongoDbOptions = {
-        useNewUrlParser: true,  
+        useNewUrlParser: true,
         ssl: true,
         sslValidate: true,
         sslCA: ca
   };
-    mongoose.connect(process.env.LOCAL_MONGODB_URL, mongoDbOptions)
+    mongoose.connect(process.env.MONGODB_URL, mongoDbOptions)
         .then(res => console.log(res))
         .catch(function (reason) {
             console.log('Unable to connect to the mongodb instance. Error: ', reason);
         });
-    sessionDB = process.env.LOCAL_MONGODB_URL;
-    console.log('Your MongoDB is running at ' + process.env.LOCAL_MONGODB_URL);
+    sessionDB = process.env.MONGODB_URL;
+    console.log('Your MongoDB is running at ' + process.env.MONGODB_URL);
 }
 // Connect to MongoDB Service on IBM Cloud
 else if(!appEnv.isLocal) {

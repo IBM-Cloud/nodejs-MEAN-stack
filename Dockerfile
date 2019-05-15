@@ -20,5 +20,5 @@ COPY ./server.js /src/server.js
 COPY ./.env /src/.env
 
 
-EXPOSE 6001
+EXPOSE 6020
 CMD [ "npm", "start" ]
