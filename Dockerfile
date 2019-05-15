@@ -9,7 +9,7 @@ WORKDIR /src
 # If you are building your code for production
 # RUN npm ci --only=production
 
-COPY ./package*.json /src/package*.json
+COPY ./package*.json /src/
 
 RUN npm install
 
