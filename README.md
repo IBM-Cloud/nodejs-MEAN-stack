@@ -31,7 +31,7 @@ The code and detailed steps are discussed in the [IBM Cloud solution tutorial](h
 1. If you don't have an account, [create a free one here](https://cloud.ibm.com).
 1. Login to your account via the command line: `ibmcloud login`
 1. Target your account ORG and SPACE  `ibmcloud target --cf`
-1. Create the instance of Compose for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
+1. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
 1. Rename `.env.example` file to `.env` and run `ibmcloud cf service-key mean-starter-mongodb "Service credentials-1"` for MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
 1. Run `node server.js` to start your app
 1. Open a browser to the link provided in the terminal prompt to view your app
@@ -61,7 +61,7 @@ Option 2 (deploy from your local machine):
 3. If you don't have an account, [create a free one here](https://cloud.ibm.com).
 4. Login to your account via the command line: `ibmcloud login`
 5. Target your account ORG and SPACE  `ibmcloud target --cf`
-6. Create the instance of Compose for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
+6. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
 7. Push your app to IBM Cloud with `ibmcloud cf push`
 8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
 
