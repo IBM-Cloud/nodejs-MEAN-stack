@@ -3,7 +3,6 @@
   "version": "1.1.0",
   "description": "MEAN (Mongo, Express, Angular, Node.js) Boilerplate for IBM Cloud",
   "main": "server.js",
-  "engines" : { "node" : "8.*" },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -27,17 +26,17 @@
   },
   "homepage": "https://github.com/IBM-Cloud/nodejs-MEAN-stack",
   "dependencies": {
-    "bcrypt": "^2.0.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.14.1",
-    "cfenv": "^1.0.x",
-    "connect-mongo": "^2.0.2",
-    "cookie-parser": "^1.4.0",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.x",
-    "express-session": "^1.12.1",
-    "express-validator": "^2.18.0",
-    "mongoose": "^5.1.0",
-    "passport": "^0.4.0",
+    "cfenv": "^1.2.3",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.9.25",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {}

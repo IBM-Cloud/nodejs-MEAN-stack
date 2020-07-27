@@ -27,7 +27,7 @@ var express = require('express'),// server middleware
 Local Environment Variables
  ********************************/
 if(appEnv.isLocal){
-    require('dotenv').load();// Loads .env file into environment
+    require('dotenv').config();// Loads .env file into environment
 }
 
 /********************************
@@ -41,10 +41,13 @@ if(appEnv.isLocal){
         useNewUrlParser: true,
         ssl: true,
         sslValidate: true,
-        sslCA: ca
+        sslCA: ca,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useUnifiedTopology: true
   };
     mongoose.connect(process.env.MONGODB_URL, mongoDbOptions)
-        .then(res => console.log(res))
+        .then(res => console.log("Connected to mongodb instance"))
         .catch(function (reason) {
             console.log('Unable to connect to the mongodb instance. Error: ', reason);
         });
@@ -63,14 +66,17 @@ else if(!appEnv.isLocal) {
         sslValidate: true,
         sslCA: ca,
         poolSize: 1,
-        reconnectTries: 1
+        reconnectTries: 1,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useUnifiedTopology: true
     };
 
     console.log("Your MongoDB is running at ", mongoDbUrl);
     // connect to our database
     mongoose.Promise = global.Promise;
     mongoose.connect(mongoDbUrl, mongoDbOptions)
-        .then(res => console.log(res))
+        .then(res => console.log("Connected to mongodb instance."))
         .catch(function (reason) {
             console.log('Unable to connect to the mongodb instance. Error: ', reason);
         });
@@ -232,7 +238,7 @@ app.post('/account/create', function(req,res){
 //Account deletion
 app.post('/account/delete', authorizeRequest, function(req, res){
 
-    User.remove({ username: req.body.username }, function(err) {
+    User.deleteOne({ username: req.body.username }, function(err) {
         if (err) {
             console.log(err);
             res.status(500).send('Error deleting account.');
