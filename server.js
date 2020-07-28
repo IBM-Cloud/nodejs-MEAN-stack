@@ -2,6 +2,14 @@
 
 'use strict';
 
+function unicodeToChar(text) {
+    return text.replace(/\\u[\dA-F]{4}/gi, 
+        function (match) {
+            return String.fromCharCode(parseInt(match.replace(/\\u/g, ''), 16));
+        });
+}
+
+
 /********************************
 Dependencies
 ********************************/
@@ -46,13 +54,13 @@ if(appEnv.isLocal){
         useCreateIndex: true,
         useUnifiedTopology: true
   };
-    mongoose.connect(process.env.MONGODB_URL, mongoDbOptions)
+    mongoose.connect(unicodeToChar(process.env.MONGODB_URL), mongoDbOptions)
         .then(res => console.log("Connected to mongodb instance"))
         .catch(function (reason) {
             console.log('Unable to connect to the mongodb instance. Error: ', reason);
         });
     sessionDB = process.env.MONGODB_URL;
-    console.log('Your MongoDB is running at ' + process.env.MONGODB_URL);
+    console.log('Your MongoDB is running at ' + unicodeToChar(process.env.MONGODB_URL));
 }
 // Connect to MongoDB Service on IBM Cloud
 else if(!appEnv.isLocal) {
@@ -75,7 +83,7 @@ else if(!appEnv.isLocal) {
     console.log("Your MongoDB is running at ", mongoDbUrl);
     // connect to our database
     mongoose.Promise = global.Promise;
-    mongoose.connect(mongoDbUrl, mongoDbOptions)
+    mongoose.connect(unicodeToChar(mongoDbUrl), mongoDbOptions)
         .then(res => console.log("Connected to mongodb instance."))
         .catch(function (reason) {
             console.log('Unable to connect to the mongodb instance. Error: ', reason);
