@@ -7,7 +7,3 @@ applications:
   - mean-starter-mongodb
   env:
     NODE_ENV: cloud-foundry
-declared-services:
-  mean-starter-mongodb:
-    label: databases-for-mongodb
-    plan: standard

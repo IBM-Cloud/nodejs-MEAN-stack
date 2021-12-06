@@ -52,3 +52,4 @@ mongodb.conf
 *.sln
 
 # Courtesy of https://github.com/meanjs/mean/blob/master/.gitignore
+__temp__ca.pem
