@@ -13,7 +13,7 @@ The code and detailed steps are discussed in the [IBM Cloud solution tutorial](h
 - Create, edit and delete user accounts
 - Authentication with username/password
 - Protected routes that can only be accessed by authenticated users
-- Bootstrap CSS framework & [Cosmo theme](https://bootswatch.com/cosmo/)
+- Bootstrap CSS framework
 - HTTPS built-in if deployed to [IBM Cloud](#deploy-to-ibm-cloud)
 - [Mongoose](https://github.com/Automattic/mongoose) for MongoDB interactions.
 - [PassportJS](http://passportjs.org) for authentication, with over 300 authentication strategies to pick from.
@@ -23,8 +23,28 @@ The code and detailed steps are discussed in the [IBM Cloud solution tutorial](h
 - [IBM Cloud Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb)
 - [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
 
-## Getting Started
-##### Run the application locally
+## Files & Folders
+
+| File                               | Description                                                  |
+| ---------------------------------- | ------------------------------------------------------------ |
+| [**manifest.yml**](./manifest.yml) | File that defines deployment paramaters. [More info here](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
+| [**.env.example**](./.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
+| [**server.js**](./server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
+| [**/server**](./server) | Folder for files used by the Node.js server
+| [/server/models/**user.model.js**](./server/models/user.model.js) | Model for storing users in MongoDB
+| [**/public**](./public) | Folder for files delivered to users, such as html and css files
+| [/public/js/**app.js**](./public/js/app.js) | Angular application for manipulating and rendering data in browser
+
+## Application
+- **MongoDB** stores user account information and persists sessions (so that a server crash does not log out all users.)
+- **Express** functions Node.js middleware to handle all HTTP requests and routing.
+- **Angular** handles HTML templating and data manipulation.
+- **Node.js** is the runtime for the application.
+
+There is also generous commenting throughout the application which helps explain critical parts of the application.
+
+## Running locally
+
 1. Clone or download this repo onto your machine.
 1. Install [application requirements](#application-requirements) if not done so already.
 1. Open application directory in your terminal and run `npm install`
@@ -45,50 +65,8 @@ An alternative way of running locally is using the provided `Dockerfile`.
   ```
 - Run the app locally
   ```
-   docker run -p 6020:6020 -ti mean-stack:v1.0.0
+   docker run -p 8080:8080 -ti mean-stack:v1.0.0
   ```
-
-##### Deploy to IBM Cloud
-
-Option 1 (launch this app directly from this repo):
-
-[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/IBM-Cloud/nodejs-MEAN-stack)
-
-Option 2 (deploy from your local machine):
-
-1. Clone or download this repo onto your machine.
-2. Open a terminal prompt to the directory of your application.
-3. If you don't have an account, [create a free one here](https://cloud.ibm.com).
-4. Login to your account via the command line: `ibmcloud login`
-5. Target your account ORG and SPACE  `ibmcloud target --cf`
-6. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
-7. Push your app to IBM Cloud with `ibmcloud cf push`
-8. Done, the app should be looking like:<img src="ReadME-Images/live-app.png">
-
-#### Problems or Questions?
-
-Create a [GitHub issue](https://github.com/IBM-Cloud/nodejs-MEAN-stack/issues/new) for questions or problems occurs using this demo.
-
-## Critical Files & Folders
-
-| File                               | Description                                                  |
-| ---------------------------------- | ------------------------------------------------------------ |
-| [**manifest.yml**](./manifest.yml) | File that defines deployment paramaters. [More info here](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
-| [**.env.example**](./.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
-| [**server.js**](./server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
-| [**/server**](./server) | Folder for files used by the Node.js server
-| [/server/models/**user.model.js**](./server/models/user.model.js) | Model for storing users in MongoDB
-| [**/public**](./public) | Folder for files delivered to users, such as html and css files
-| [/public/js/**app.js**](./public/js/app.js) | Angular application for manipulating and rendering data in browser
-
-
-## Application
-- **MongoDB** stores user account information and persists sessions (so that a server crash does not log out all users.)
-- **Express** functions Node.js middleware to handle all HTTP requests and routing.
-- **Angular** handles HTML templating and data manipulation.
-- **Node.js** is the runtime for the application.
-
-There is also generous commenting throughout the application which helps explain critical parts of the application.
 
 ## Contribute
 Please create a pull request with your desired changes.

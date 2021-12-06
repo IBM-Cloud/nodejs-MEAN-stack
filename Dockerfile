@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:14
 
 # Create app directory
 RUN mkdir /src
@@ -19,6 +19,6 @@ COPY ./public /src/public
 COPY ./server.js /src/server.js
 COPY ./.env /src/.env
 
-
-EXPOSE 6020
+ENV PORT 8080
+EXPOSE 8080
 CMD [ "npm", "start" ]
