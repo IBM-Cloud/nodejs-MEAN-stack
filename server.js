@@ -14,15 +14,15 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // MongoDB connection library
 const mongoose = require('mongoose');
-const User = require('./server/models/user.model');
+const User = require('./models/user.model');
 
 /********************************
  Load environment
  ********************************/
-const appEnv = require('cfenv').getAppEnv();
-if (appEnv.isLocal) {
+// const appEnv = require('cfenv').getAppEnv();
+// if (appEnv.isLocal) {
   require('dotenv').config();// Loads .env file into environment
-}
+// }
 
 /********************************
  MongoDB Connection
@@ -31,20 +31,20 @@ async function initializeDatabase() {
   //Detects environment and connects to appropriate DB
   var caCertificateBase64, mongoDbUrl;
 
-  if (appEnv.isLocal) {
+//   if (appEnv.isLocal) {
     caCertificateBase64 = process.env.CERTIFICATE_BASE64;
     mongoDbUrl = process.env.MONGODB_URL;
-  }
-  // Connect to MongoDB Service on IBM Cloud
-  else if (!appEnv.isLocal) {
-    var mongoDbCredentials = appEnv.services["databases-for-mongodb"][0].credentials.connection.mongodb;
-    caCertificateBase64 = mongoDbCredentials.certificate.certificate_base64
-    mongoDbUrl = mongoDbCredentials.composed[0];
-  }
-  else {
-    console.log('No configuration found to connect to MongoDB.');
-    System.exit(1);
-  }
+//   }
+//   // Connect to MongoDB Service on IBM Cloud
+//   else if (!appEnv.isLocal) {
+//     var mongoDbCredentials = appEnv.services["databases-for-mongodb"][0].credentials.connection.mongodb;
+//     caCertificateBase64 = mongoDbCredentials.certificate.certificate_base64
+//     mongoDbUrl = mongoDbCredentials.composed[0];
+//   }
+//   else {
+//     console.log('No configuration found to connect to MongoDB.');
+//     System.exit(1);
+//   }
 
   function unicodeToChar(text) {
     return text.replace(/\\u[\dA-F]{4}/gi,
@@ -123,25 +123,23 @@ function configureApp() {
 
   const app = express();
   app.enable('trust proxy');
-  // Use SSL connection provided by IBM Cloud. No setup required besides redirecting all HTTP requests to HTTPS
-  if (!appEnv.isLocal) {
-    app.use(function (req, res, next) {
-      if (req.secure) // returns true is protocol = https
-        next();
-      else
-        res.redirect('https://' + req.headers.host + req.url);
-    });
-  }
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
+//   app.use(session({
+//     secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
+//     resave: true,
+//     store: new MongoStore({ client: mongoose.connection.getClient() }),
+//     saveUninitialized: false,
+//     cookie: { secure: !appEnv.isLocal }
+//   }));
   app.use(session({
-    secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
-    resave: true,
-    store: new MongoStore({ client: mongoose.connection.getClient() }),
-    saveUninitialized: false,
-    cookie: { secure: !appEnv.isLocal }
-  }));
+   secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
+   resave: true,
+   store: new MongoStore({ client: mongoose.connection.getClient() }),
+   saveUninitialized: false,
+   cookie: { secure: false }
+ }));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -327,8 +325,8 @@ function setupRoutes(app) {
  Ports
  ********************************/
 function startApp(app) {
-  app.listen(process.env.PORT || appEnv.port, process.env.BIND || appEnv.bind, function () {
-    console.log("Application running at " + appEnv.url);
+  app.listen(process.env.PORT, process.env.BIND, function () {
+    console.log(`Application running at http://localhost:${process.env.PORT}`);
   });
 }
 

@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "start-local": "node -r dotenv/config server.js",
     "dev": "nodemon server.js"
   },
   "repository": {
