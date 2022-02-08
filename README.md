@@ -2,7 +2,7 @@
 
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Cloud](https://cloud.ibm.com).
 
-This application uses the [IBM Cloud Databases for MongoDB service](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Node.js runtime](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-nodejs_runtime) on IBM Cloud.
+This application uses the [Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Code Engine](https://cloud.ibm.com/codeengine) on IBM Cloud.
 
 The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack).
 

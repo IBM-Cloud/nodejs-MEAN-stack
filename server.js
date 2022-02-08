@@ -14,15 +14,12 @@ const LocalStrategy = require('passport-local').Strategy;
 
 // MongoDB connection library
 const mongoose = require('mongoose');
-const User = require('./models/user.model');
+const User = require('./server/models/user.model');
 
 /********************************
  Load environment
  ********************************/
-// const appEnv = require('cfenv').getAppEnv();
-// if (appEnv.isLocal) {
-  require('dotenv').config();// Loads .env file into environment
-// }
+require('dotenv').config();// Loads .env file into environment
 
 /********************************
  MongoDB Connection
@@ -31,20 +28,8 @@ async function initializeDatabase() {
   //Detects environment and connects to appropriate DB
   var caCertificateBase64, mongoDbUrl;
 
-//   if (appEnv.isLocal) {
-    caCertificateBase64 = process.env.CERTIFICATE_BASE64;
-    mongoDbUrl = process.env.MONGODB_URL;
-//   }
-//   // Connect to MongoDB Service on IBM Cloud
-//   else if (!appEnv.isLocal) {
-//     var mongoDbCredentials = appEnv.services["databases-for-mongodb"][0].credentials.connection.mongodb;
-//     caCertificateBase64 = mongoDbCredentials.certificate.certificate_base64
-//     mongoDbUrl = mongoDbCredentials.composed[0];
-//   }
-//   else {
-//     console.log('No configuration found to connect to MongoDB.');
-//     System.exit(1);
-//   }
+  caCertificateBase64 = process.env.CERTIFICATE_BASE64;
+  mongoDbUrl = process.env.MONGODB_URL;
 
   function unicodeToChar(text) {
     return text.replace(/\\u[\dA-F]{4}/gi,
@@ -126,13 +111,7 @@ function configureApp() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
-//   app.use(session({
-//     secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
-//     resave: true,
-//     store: new MongoStore({ client: mongoose.connection.getClient() }),
-//     saveUninitialized: false,
-//     cookie: { secure: !appEnv.isLocal }
-//   }));
+
   app.use(session({
    secret: process.env.SESSION_SECRET || 'this_is_a_default_session_secret_in_case_one_is_not_defined',
    resave: true,
