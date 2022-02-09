@@ -1,13 +1,7 @@
 # Files listed here will not be deployed to Bluemix. Similar to .gitignore function
 
 node_modules/
-ReadME-Images
 .cfignore
 .env
 .env.example
-.gitignore
-COPYRIGHT.MD
-Dockerfile
-LICENSE.md
-README.md
 __temp__ca.pem
