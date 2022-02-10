@@ -2,7 +2,7 @@
 
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Cloud](https://cloud.ibm.com).
 
-This application uses the [Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Code Engine](https://cloud.ibm.com/codeengine) on IBM Cloud.
+This application uses [Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Code Engine](https://cloud.ibm.com/codeengine) on IBM Cloud.
 
 The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack).
 
@@ -50,8 +50,8 @@ There is also generous commenting throughout the application which helps explain
 1. If you don't have an account, [create a free one here](https://cloud.ibm.com).
 1. Login to your account via the command line: `ibmcloud login`
 1. Target your desired region  `ibmcloud target -r ca-tor`
-1. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud resource service-instance-create mean-starter-mongodb databases-for-mongodb standard ca-tor`
-1. Rename `.env.example` file to `.env` and run `ibmcloud resource service-key-create mean-starter-mongodb-key --instance-name mean-starter-mongodb` for MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
+1. Create the instance of Databases for MongoDB on IBM Cloud:  `ibmcloud resource service-instance-create mean-starter-mongodb databases-for-mongodb standard ca-tor`
+1. Copy `.env.example` file to `.env`.  Edir `.env` to fill it the required values.  You can run `ibmcloud resource service-key-create mean-starter-mongodb-key --instance-name mean-starter-mongodb` to obtain the MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
 1. Run `node server.js` to start your app
 1. Open a browser to the link provided in the terminal prompt to view your app
 
@@ -71,7 +71,7 @@ An alternative way of running locally is using the provided `Dockerfile`.
 Please create a pull request with your desired changes.
 
 ## Troubleshooting
-The primary source of debugging information for your app running in the cloud is the logs. To see them, run the following use the Code Engine UI.
+The primary source of debugging information for your app running in the cloud are the logs. To see them, use the [Code Engine](https://cloud.ibm.com/codeengine/projects) wbe interface.
 
 <img src="ReadME-Images/log-mon.png">
 
