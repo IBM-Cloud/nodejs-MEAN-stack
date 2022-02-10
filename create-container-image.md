@@ -12,12 +12,12 @@ You will use the provided `Dockerfile`.
    docker run -p 8080:8080 --env-file .env -ti mean-stack:v1.0.0 
 
 - Login to your container registry.
-   > Note: If using the IBM Cloud Container registry, don't forger to use `ibmcloud cr login`
+   > Note: If using the IBM Cloud Container registry, don't forget to use `ibmcloud cr login`
 
 - Tag the image with your container registry's namespace/repository name.
    > Note:For IBM Cloud Container Registry in the US: `docker tag mean-stack:v1.0.0 us.icr.io/<namespace>/mean-stack:1.0.0`
 
 - Push the image.
-   > Note: For IBM Cloud Container Registry in the US: `docker tag mean-stack:v1.0.0 us.icr.io/<namespace>/mean-stack:1.0.0`
+   > Note: For IBM Cloud Container Registry in the US: `docker push mean-stack:v1.0.0 us.icr.io/<namespace>/mean-stack:1.0.0`
 
 - If you are using IBM Cloud Code Engine to run your container image and the containter registry used is the IBM Cloud Container Registry or a non-Public registry, you will be required to setup a secret for reading the image. Follow the steps outlined in here: https://cloud.ibm.com/docs/codeengine?topic=codeengine-add-registry to do just that.
