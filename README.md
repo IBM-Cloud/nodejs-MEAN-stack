@@ -71,7 +71,7 @@ An alternative way of running locally is using the provided `Dockerfile`.
 Please create a pull request with your desired changes.
 
 ## Troubleshooting
-The primary source of debugging information for your app running in the cloud are the logs. To see them, use the [Code Engine](https://cloud.ibm.com/codeengine/projects) wbe interface.
+The primary source of debugging information for your app running in the cloud are the logs. To see them, use the [Code Engine](https://cloud.ibm.com/codeengine/projects) web interface.
 
 <img src="ReadME-Images/log-mon.png">
 
