@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ICR_NAMESPACE: solution-tutorials
-      ICR_REPOSITORY: tutorial-application-log-analysis
+      ICR_REPOSITORY: tutorial-mean-stack
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
