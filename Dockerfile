@@ -1,10 +1,8 @@
-FROM node:14
+FROM node:16-alpine
 
 # Create app directory
-RUN mkdir /src
+RUN mkdir /src 
 WORKDIR /src
-
-
 
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -17,7 +15,6 @@ RUN npm install
 COPY ./server /src/server
 COPY ./public /src/public
 COPY ./server.js /src/server.js
-COPY ./.env /src/.env
 
 ENV PORT 8080
 EXPOSE 8080

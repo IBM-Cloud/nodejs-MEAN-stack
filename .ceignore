@@ -1,0 +1,7 @@
+# Files listed here will not be deployed. Similar to .gitignore function
+
+node_modules/
+.cfignore
+.env
+.env.example
+__temp__ca.pem

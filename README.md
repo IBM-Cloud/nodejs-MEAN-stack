@@ -2,7 +2,7 @@
 
 This is a basic boilerplate for the MEAN stack ([MongoDB](https://www.mongodb.org/), [Express](http://expressjs.com/), [AngularJS](https://angularjs.org/) and [Node.js](https://nodejs.org)) on [IBM Cloud](https://cloud.ibm.com).
 
-This application uses the [IBM Cloud Databases for MongoDB service](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Node.js runtime](https://cloud.ibm.com/docs/runtimes/nodejs?topic=Nodejs-nodejs_runtime) on IBM Cloud.
+This application uses [Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb) and [Code Engine](https://cloud.ibm.com/codeengine) on IBM Cloud.
 
 The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack).
 
@@ -21,13 +21,12 @@ The code and detailed steps are discussed in the [IBM Cloud solution tutorial](h
 ## Application Requirements
 - [Node.js & NPM](https://nodejs.org/en/download/)
 - [IBM Cloud Databases for MongoDB](https://cloud.ibm.com/catalog/services/databases-for-mongodb)
-- [Cloud Foundry Command Line Tool](https://docs.cloudfoundry.org/devguide/installcf/)
+- [Code Engine Command Line Tool](https://cloud.ibm.com/docs/codeengine?topic=codeengine-cli)
 
 ## Files & Folders
 
 | File                               | Description                                                  |
 | ---------------------------------- | ------------------------------------------------------------ |
-| [**manifest.yml**](./manifest.yml) | File that defines deployment paramaters. [More info here](http://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html)
 | [**.env.example**](./.env.example) | Set custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) for your application. This is the proper way to store credentials and other sensitive values.
 | [**server.js**](./server.js) | Main server file that the Node.js runtime uses. It contains all the server logic.
 | [**/server**](./server) | Folder for files used by the Node.js server
@@ -50,9 +49,9 @@ There is also generous commenting throughout the application which helps explain
 1. Open application directory in your terminal and run `npm install`
 1. If you don't have an account, [create a free one here](https://cloud.ibm.com).
 1. Login to your account via the command line: `ibmcloud login`
-1. Target your account ORG and SPACE  `ibmcloud target --cf`
-1. Create the instance of IBM Cloud Databases for MongoDB on IBM Cloud:  `ibmcloud cf create-service databases-for-mongodb standard mean-starter-mongodb`
-1. Rename `.env.example` file to `.env` and run `ibmcloud cf service-key mean-starter-mongodb "Service credentials-1"` for MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
+1. Target your desired region  `ibmcloud target -r ca-tor`
+1. Create the instance of Databases for MongoDB on IBM Cloud:  `ibmcloud resource service-instance-create mean-starter-mongodb databases-for-mongodb standard ca-tor`
+1. Copy `.env.example` file to `.env`.  Edir `.env` to fill it the required values.  You can run `ibmcloud resource service-key-create mean-starter-mongodb-key --instance-name mean-starter-mongodb` to obtain the MONGODB_URL and CERTIFICATE_BASE64. Choose your own SESSION_SECRET.
 1. Run `node server.js` to start your app
 1. Open a browser to the link provided in the terminal prompt to view your app
 
@@ -65,26 +64,18 @@ An alternative way of running locally is using the provided `Dockerfile`.
   ```
 - Run the app locally
   ```
-   docker run -p 8080:8080 -ti mean-stack:v1.0.0
+   docker run -p 8080:8080 --env-file .env -ti mean-stack:v1.0.0 
   ```
 
 ## Contribute
 Please create a pull request with your desired changes.
 
 ## Troubleshooting
-The primary source of debugging information for your app is the logs. To see them, run the following Cloud Foundry command using the IBM Cloud CLI:
+The primary source of debugging information for your app running in the cloud are the logs. To see them, use the [Code Engine](https://cloud.ibm.com/codeengine/projects) wbe interface.
 
-  ```
-  $ ibmcloud cf logs <application-name> --recent
-  ```
+<img src="ReadME-Images/log-mon.png">
 
-If you are not sure what your application name is, use this command to print your application name(s):
-
-  ```
-  $ ibmcloud cf apps
-  ```
-
-For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://cloud.ibm.com/docs/cloud-foundry-public?topic=cloud-foundry-public-ts-cf-apps) in the documentation.
+For more detailed information on troubleshooting your application, see the [Troubleshooting apps section](https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-apps) in the documentation.
 
 ## License
 See [LICENSE.MD](https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/LICENSE.md) for license information.
