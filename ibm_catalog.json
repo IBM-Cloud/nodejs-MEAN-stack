@@ -4,7 +4,7 @@
         "name": "nodejs-MEAN-stack",
         "label": "nodejs MEAN stack",
         "product_kind": "solution",
-        "version": "1.0.0",
+        "version": "1.0.3",
         "tags": [
           "MEAN-stack",
           "Technology"
@@ -75,7 +75,7 @@
                 {
                   "diagram": {
                     "caption": "Architecture diagram",
-                    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/ReadME-Images/Architecture.png",
+                    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/ReadME-Images/Architecture.svg",
                     "metadata": []
                   },
                   "description": "MEAN stack."

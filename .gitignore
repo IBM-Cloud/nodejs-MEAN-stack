@@ -68,3 +68,8 @@ __temp__ca.pem
 
 # place to keep environment variables
 local.env
+
+### drawio ***
+# DrawIO temporary files
+*.dtmp
+*.bkp

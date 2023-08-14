@@ -6,7 +6,7 @@ This application uses [Databases for MongoDB](https://cloud.ibm.com/catalog/serv
 
 The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack).
 
-<img src="ReadME-Images/Architecture.png">
+<img src="ReadME-Images/Architecture.svg">
 
 #### Features
 - MVC project structure
