@@ -85,7 +85,13 @@ Schematics is a cloud based Infrastructure as Code runner with cloud based state
 
 The link above should have opened a schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
 
-
+## Provision as a Deployable Architecture
+In the IBM Cloud create a private catalog and then add a product to the catalog.
+- Product type: Deployable architecture
+- Deliver method: Terraform
+- Public repository: Open the [releases](https://github.com/powellquiring/nodejs-MEAN-stack/releases) and right click on the source.code.tar.gz file and paste in the string.  Example: https://github.com/powellquiring/nodejs-MEAN-stack/archive/refs/tags/1.0.3.tar.gz
+- Variation: Standard
+- Rest of the values are pretty clear
 
 
 ## Contribute

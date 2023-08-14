@@ -4,7 +4,7 @@
         "name": "nodejs-MEAN-stack",
         "label": "nodejs MEAN stack",
         "product_kind": "solution",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "tags": [
           "MEAN-stack",
           "Technology"
@@ -16,7 +16,7 @@
         ],
         "short_description": "MEAN stack using Code Engine and Mongodb",
         "long_description": "A demonstration deployable architecture based on the MEAN stack.  Leverages Code Engine to host the application and Mongodb for the database.",
-        "offering_docs_url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack",
+        "offering_docs_url": "https://github.com/powellquiring/nodejs-MEAN-stack",
         "support_details": "This is a demonstration and no official support is given.",
         "flavors": [
           {
@@ -26,7 +26,20 @@
             "licenses": [
               {
                 "name": "Apache License 2.0",
-                "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/LICENSE.md"
+                "url": "https://github.com/powellquiring/nodejs-MEAN-stack/blob/master/LICENSE.md"
+              }
+            ],
+            "configuration": [
+              {
+                "key": "prefix",
+                "required": false,
+                "description": "prefix string for all resources if not provided mean-stack-RANDOM string is generated"
+              },
+              {
+                "key": "use_default_resource_group",
+                "type": "bool",
+                "required": false,
+                "description": "if true use the account default resource group if false mean-stack-RANDOM string is used to create a new resource group"
               }
             ],
             "outputs": [
@@ -69,13 +82,13 @@
                 ]
               }
             ],
-            "release_notes_url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/CHANGELOG.md",
+            "release_notes_url": "https://github.com/powellquiring/nodejs-MEAN-stack/blob/master/CHANGELOG.md",
             "architecture": {
               "diagrams": [
                 {
                   "diagram": {
                     "caption": "Architecture diagram",
-                    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/ReadME-Images/Architecture.svg",
+                    "url": "https://github.com/powellquiring/nodejs-MEAN-stack/blob/master/ReadME-Images/Architecture.svg",
                     "metadata": []
                   },
                   "description": "MEAN stack."
