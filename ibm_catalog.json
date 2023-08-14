@@ -1,0 +1,89 @@
+{
+    "products": [
+      {
+        "name": "nodejs-MEAN-stack",
+        "label": "nodejs MEAN stack",
+        "product_kind": "solution",
+        "version": "1.0.0",
+        "tags": [
+          "MEAN-stack",
+          "Technology"
+        ],
+        "keywords": [
+          "MEAN",
+          "code-engine",
+          "mongodb"
+        ],
+        "short_description": "MEAN stack using Code Engine and Mongodb",
+        "long_description": "A demonstration deployable architecture based on the MEAN stack.  Leverages Code Engine to host the application and Mongodb for the database.",
+        "offering_docs_url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack",
+        "support_details": "This is a demonstration and no official support is given.",
+        "flavors": [
+          {
+            "label": "Standard",
+            "name": "mean-stack",
+            "install_type": "fullstack",
+            "licenses": [
+              {
+                "name": "Apache License 2.0",
+                "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/LICENSE.md"
+              }
+            ],
+            "outputs": [
+              {
+                "resource_group_name": "resource_group_name",
+                "endpoint": "endpoint"
+              }
+            ],
+            "compliance": {
+              "authority": "scc-v3",
+              "controls": [
+                {
+                  "profile": {
+                    "name": "IBM Cloud Security Best Practices",
+                    "version": "1.1.0"
+                  },
+                  "names": [
+                    "4.39"
+                  ]
+                }
+              ]
+            },
+            "iam_permissions": [
+              {
+                "service_name": "iam-groups",
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::role:Administrator"
+                ]
+              },
+              {
+                "service_name": "codeengine",
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::role:Administrator"
+                ]
+              },
+              {
+                "service_name": "databases-for-mongodb",
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::role:Administrator"
+                ]
+              }
+            ],
+            "release_notes_url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/CHANGELOG.md",
+            "architecture": {
+              "diagrams": [
+                {
+                  "diagram": {
+                    "caption": "Architecture diagram",
+                    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/ReadME-Images/Architecture.png",
+                    "metadata": []
+                  },
+                  "description": "MEAN stack."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
