@@ -81,7 +81,12 @@ terraform apply
 ## Provision with Schematics
 Schematics is a cloud based Infrastructure as Code runner with cloud based state.  It leverages the Terraform configuration described in the previous section.
 
-[Create a Schematics Workspace from this github repository](https://cloud.ibm.com//schematics/workspaces/create?repository=https://github.com/IBM-Cloud/nodejs-MEAN-stack&terraform_version=terraform_v1.4)
+[Create a Schematics Workspace from this github repository](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/powellquiring/nodejs-MEAN-stack&terraform_version=terraform_v1.4)
+
+The link above should have opened a schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
+
+
+
 
 ## Contribute
 Please create a pull request with your desired changes.
@@ -94,4 +99,4 @@ The primary source of debugging information for your app running in the cloud ar
 For more detailed information on troubleshooting your application, see the [Troubleshooting apps section](https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-apps) in the documentation.
 
 ## License
-See [LICENSE.MD](https://github.com/IBM-Cloud/nodejs-MEAN-stack/blob/master/LICENSE.md) for license information.
+See [LICENSE.MD](https://github.com/powellquiring/nodejs-MEAN-stack/blob/master/LICENSE.md) for license information.
