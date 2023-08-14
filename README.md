@@ -78,6 +78,11 @@ terraform init
 terraform apply
 ```
 
+## Provision with Schematics
+Schematics is a cloud based Infrastructure as Code runner with cloud based state.  It leverages the Terraform configuration described in the previous section.
+
+[Create a Schematics Workspace from this github repository](https://cloud.ibm.com//schematics/workspaces/create?repository=https://github.com/IBM-Cloud/nodejs-MEAN-stack&terraform_version=terraform_v1.4)
+
 ## Contribute
 Please create a pull request with your desired changes.
 
