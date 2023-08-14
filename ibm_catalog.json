@@ -4,7 +4,7 @@
         "name": "nodejs-MEAN-stack",
         "label": "nodejs MEAN stack",
         "product_kind": "solution",
-        "version": "1.0.4",
+        "version": "1.0.5",
         "tags": [
           "MEAN-stack",
           "Technology"
@@ -37,7 +37,7 @@
               },
               {
                 "key": "use_default_resource_group",
-                "type": "bool",
+                "type": "boolean",
                 "required": false,
                 "description": "if true use the account default resource group if false mean-stack-RANDOM string is used to create a new resource group"
               }
