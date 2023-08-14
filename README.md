@@ -67,6 +67,17 @@ An alternative way of running locally is using the provided `Dockerfile`.
    docker run -p 8080:8080 --env-file .env -ti mean-stack:v1.0.0 
   ```
 
+## Provision with Terraform
+The steps of creating the resouces (database, code engine project, secret, application, ...) described in [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack) are captured in the terraform file [main.tf](main.tf).
+
+[Getting started with solution tutorials](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) has a description of how to get started with terraform on a workstation.
+
+
+```
+terraform init
+terraform apply
+```
+
 ## Contribute
 Please create a pull request with your desired changes.
 
