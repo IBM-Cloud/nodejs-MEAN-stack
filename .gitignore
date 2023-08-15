@@ -53,3 +53,23 @@ mongodb.conf
 
 # Courtesy of https://github.com/meanjs/mean/blob/master/.gitignore
 __temp__ca.pem
+
+### Vim ###
+# swap
+[._]*.sw[a-p]
+
+## Terraform ###
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# place to keep environment variables
+local.env
+
+### drawio ***
+# DrawIO temporary files
+*.dtmp
+*.bkp

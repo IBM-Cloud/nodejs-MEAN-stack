@@ -6,7 +6,7 @@ This application uses [Databases for MongoDB](https://cloud.ibm.com/catalog/serv
 
 The code and detailed steps are discussed in the [IBM Cloud solution tutorial](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) titled [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack).
 
-<img src="ReadME-Images/Architecture.png">
+<img src="ReadME-Images/Architecture.svg">
 
 #### Features
 - MVC project structure
@@ -66,6 +66,33 @@ An alternative way of running locally is using the provided `Dockerfile`.
   ```
    docker run -p 8080:8080 --env-file .env -ti mean-stack:v1.0.0 
   ```
+
+## Provision with Terraform
+The steps of creating the resouces (database, code engine project, secret, application, ...) described in [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack) are captured in the terraform file [main.tf](main.tf).
+
+[Getting started with solution tutorials](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) has a description of how to get started with terraform on a workstation.
+
+
+```
+terraform init
+terraform apply
+```
+
+## Provision with Schematics
+Schematics is a cloud based Infrastructure as Code runner with cloud based state.  It leverages the Terraform configuration described in the previous section.
+
+[Create a Schematics Workspace from this github repository](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/nodejs-MEAN-stack&terraform_version=terraform_v1.4)
+
+The link above should have opened a schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
+
+## Provision as a Deployable Architecture
+In the IBM Cloud create a private catalog and then add a product to the catalog:
+- Product type: Deployable architecture
+- Deliver method: Terraform
+- Public repository: Open the [releases](https://github.com/IBM-Cloud/nodejs-MEAN-stack/releases) and right click on the source.code.tar.gz file and paste in the string.  Example: https://github.com/IBM-Cloud/nodejs-MEAN-stack/archive/refs/tags/1.0.3.tar.gz
+- Variation: Standard
+- Rest of the values are pretty clear
+
 
 ## Contribute
 Please create a pull request with your desired changes.
