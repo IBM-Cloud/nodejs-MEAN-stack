@@ -59,6 +59,7 @@ data "ibm_resource_group" "group" {
   is_default = true
 }
 
+
 // mongodb /////////////////////////////
 resource "ibm_database" "mongodb" {
   resource_group_id = local.resource_group_id
@@ -119,10 +120,10 @@ resource "ibm_code_engine_app" "code_engine_app_instance" {
   }
 }
 
-output "resource_group_name" {
-  value = local.resource_group_name
-}
-
 output "endpoint" {
   value = ibm_code_engine_app.code_engine_app_instance.endpoint
+}
+
+output "resource_group_name" {
+  value = local.resource_group_name
 }
