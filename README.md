@@ -85,7 +85,7 @@ Schematics is a cloud based Infrastructure as Code runner with cloud based state
 
 The link above should have opened a Schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
 
-In the Schematics workspace you can configure the variables before clicking **Apply plan** to provision the resources.  Check out the logs view and at the end you will see the endpoint URL that can be used to access the application.
+In the Schematics workspace you can configure the variables before clicking **Apply plan** to provision the resources.  Check out the **Jobs** tab - scroll to about the end of the Logs to see the endpoint URL that can be used to access the application.
 
 ## Create private catalog for a Deployable Architecture
 In the IBM Cloud console create a private catalog and then add a product to the catalog:
