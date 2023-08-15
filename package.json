@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/powellquiring/nodejs-MEAN-stack.git"
+    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack.git"
   },
   "keywords": [
     "Node.js",
@@ -23,9 +23,9 @@
   "author": "IBM Cloud",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/powellquiring/nodejs-MEAN-stack/issues"
+    "url": "https://github.com/IBM-Cloud/nodejs-MEAN-stack/issues"
   },
-  "homepage": "https://github.com/powellquiring/nodejs-MEAN-stack",
+  "homepage": "https://github.com/IBM-Cloud/nodejs-MEAN-stack",
   "dependencies": {
     "bcrypt": "5.0.1",
     "body-parser": "1.19.0",
