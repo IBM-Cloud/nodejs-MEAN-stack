@@ -85,7 +85,7 @@ Schematics is a cloud based Infrastructure as Code runner with cloud based state
 
 The link above should have opened a schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
 
-## Provision as a Deployable Architecture
+## Create pricate catalog for a Deployable Architecture
 In the IBM Cloud create a private catalog and then add a product to the catalog:
 - Product type: Deployable architecture
 - Deliver method: Terraform
@@ -93,6 +93,14 @@ In the IBM Cloud create a private catalog and then add a product to the catalog:
 - Variation: Standard
 - Rest of the values are pretty clear
 
+Click on the **Version** in the Version list.  It will walk through a wizard where the defaults are correct, just click **Next** in all of the pages till you reach Validate version, and click **Validate**, to create a schematics workspace and resources.
+
+After validation is complete create/configure or open the Security and Compliance and run a scan over the entire account using the **IBM Cloud Security Best Practices version 1.2.0** profile by opening the profile and click Attach in the action menu.  Frequency can be set to 30 days since the first scan will be run presently and that will provide the results that are required.
+
+Currently the scan results are failing.
+
+## Create a Project
+Create a project and then create a configuration in the project using the private catalog product version created in the previous step.  Override the Code Risk Analyzer failure for the encryption of the MongoDB.
 
 ## Contribute
 Please create a pull request with your desired changes.
