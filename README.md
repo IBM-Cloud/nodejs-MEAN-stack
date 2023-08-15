@@ -68,7 +68,7 @@ An alternative way of running locally is using the provided `Dockerfile`.
   ```
 
 ## Provision with Terraform
-The steps of creating the resouces (database, code engine project, secret, application, ...) described in [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack) are captured in the terraform file [main.tf](main.tf).
+The steps of creating the resouces (database, code engine project, secret, application, .env file, ...) described in [Modern web application using MEAN stack](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-mean-stack) are captured in the terraform file [main.tf](main.tf).
 
 [Getting started with solution tutorials](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-tutorials) has a description of how to get started with terraform on a workstation.
 
@@ -83,24 +83,24 @@ Schematics is a cloud based Infrastructure as Code runner with cloud based state
 
 [Create a Schematics Workspace from this github repository](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/nodejs-MEAN-stack&terraform_version=terraform_v1.4)
 
-The link above should have opened a schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
+The link above should have opened a Schematics workspace in the create dialog with the github repository pre-configured and terraform 1.4 selected.  Change the **Workspace name**, **Resource group**, and **Location** as desired.  This will be the resource group of the workspace. The resource group of the resources created will be configured in schematics. Click **Create**.
 
-## Create pricate catalog for a Deployable Architecture
-In the IBM Cloud create a private catalog and then add a product to the catalog:
+In the Schematics workspace you can configure the variables before clicking **Apply plan** to provision the resources.  Check out the logs view and at the end you will see the endpoint URL that can be used to access the application.
+
+## Create private catalog for a Deployable Architecture
+In the IBM Cloud console create a private catalog and then add a product to the catalog:
 - Product type: Deployable architecture
 - Deliver method: Terraform
 - Public repository: Open the [releases](https://github.com/IBM-Cloud/nodejs-MEAN-stack/releases) and right click on the source.code.tar.gz file and paste in the string.  Example: https://github.com/IBM-Cloud/nodejs-MEAN-stack/archive/refs/tags/1.0.3.tar.gz
 - Variation: Standard
 - Rest of the values are pretty clear
 
-Click on the **Version** in the Version list.  It will walk through a wizard where the defaults are correct, just click **Next** in all of the pages till you reach Validate version, and click **Validate**, to create a schematics workspace and resources.
+Click on the **Version** in the Version list.  It will walk through a wizard where the defaults are correct, just click **Next** in each page till you reach Validate version, and click **Validate**, to create a schematics workspace and resources.
 
 After validation is complete create/configure or open the Security and Compliance and run a scan over the entire account using the **IBM Cloud Security Best Practices version 1.2.0** profile by opening the profile and click Attach in the action menu.  Frequency can be set to 30 days since the first scan will be run presently and that will provide the results that are required.
 
-Currently the scan results are failing.
-
 ## Create a Project
-Create a project and then create a configuration in the project using the private catalog product version created in the previous step.  Override the Code Risk Analyzer failure for the encryption of the MongoDB.
+Create a project and then create a configuration in the project using the private catalog DA product version created in the previous step.
 
 ## Contribute
 Please create a pull request with your desired changes.

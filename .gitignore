@@ -73,3 +73,5 @@ local.env
 # DrawIO temporary files
 *.dtmp
 *.bkp
+
+.vscode
