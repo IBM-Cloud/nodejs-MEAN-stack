@@ -89,11 +89,11 @@ In the Schematics workspace you can configure the variables before clicking **Ap
 
 ## Create private catalog for a Deployable Architecture
 In the IBM Cloud console create a private catalog and then add a product to the catalog:
-- Product type: Deployable architecture
-- Deliver method: Terraform
-- Public repository: Open the [releases](https://github.com/IBM-Cloud/nodejs-MEAN-stack/releases) and right click on the source.code.tar.gz file and paste in the string.  Example: https://github.com/IBM-Cloud/nodejs-MEAN-stack/archive/refs/tags/1.0.3.tar.gz
-- Variation: Standard
-- Rest of the values are pretty clear
+- Product type: Deployable architecture.
+- Deliver method: Terraform.
+- Public repository: Open the [releases](https://github.com/IBM-Cloud/nodejs-MEAN-stack/releases) and right click on the source.code.tar.gz file and paste in the string.  Example: https://github.com/IBM-Cloud/nodejs-MEAN-stack/archive/refs/tags/1.0.3.tar.gz.
+- Variation: Standard.
+- Rest of the values are clear.
 
 Click on the **Version** in the Version list.  It will walk through a wizard where the defaults are correct, just click **Next** in each page till you reach Validate version, and click **Validate**, to create a schematics workspace and resources.
 
