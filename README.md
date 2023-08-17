@@ -87,7 +87,7 @@ The link above should have opened a Schematics workspace in the create dialog wi
 
 In the Schematics workspace you can configure the variables before clicking **Apply plan** to provision the resources.  Check out the **Jobs** tab - scroll to about the end of the Logs to see the endpoint URL that can be used to access the application.
 
-## Create private catalog for a Deployable Architecture
+## Create private catalog product for a Deployable Architecture
 In the IBM Cloud console create a private catalog and then add a product to the catalog:
 - Product type: Deployable architecture.
 - Deliver method: Terraform.

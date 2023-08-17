@@ -34,8 +34,7 @@ provider "ibm" {
 }
 
 resource "random_string" "random" {
-  count = var.prefix == "" ? 1 : 0
-
+  count   = var.prefix == "" ? 1 : 0
   length  = 6
   special = false
 }
@@ -59,6 +58,11 @@ data "ibm_resource_group" "group" {
   is_default = true
 }
 
+resource "random_password" "password" {
+  length  = 16
+  special = false
+}
+
 
 // mongodb /////////////////////////////
 resource "ibm_database" "mongodb" {
@@ -67,7 +71,6 @@ resource "ibm_database" "mongodb" {
   service           = "databases-for-mongodb"
   plan              = "standard"
   location          = var.region
-  adminpassword     = "password123"
 }
 
 resource "ibm_resource_key" "mongodb_key" {
@@ -76,13 +79,21 @@ resource "ibm_resource_key" "mongodb_key" {
   resource_instance_id = ibm_database.mongodb.id
 }
 
+locals {
+  SESSION_SECRET     = random_password.password.result
+  MONGODB_URL        = ibm_resource_key.mongodb_key.credentials["connection.mongodb.composed.0"]
+  CERTIFICATE_BASE64 = ibm_resource_key.mongodb_key.credentials["connection.mongodb.certificate.certificate_base64"]
+  PORT               = "8080"
+  BIND               = "0.0.0.0"
+}
+
 resource "local_file" "env" {
   content  = <<-EOT
-    SESSION_SECRET=my_secret
-    MONGODB_URL=${ibm_resource_key.mongodb_key.credentials["connection.mongodb.composed.0"]}
-    CERTIFICATE_BASE64=${ibm_resource_key.mongodb_key.credentials["connection.mongodb.certificate.certificate_base64"]}
-    PORT=8080
-    BIND=0.0.0.0
+    SESSION_SECRET=${local.SESSION_SECRET}
+    MONGODB_URL=${local.MONGODB_URL}
+    CERTIFICATE_BASE64=${local.CERTIFICATE_BASE64}
+    PORT=${local.PORT}
+    BIND=${local.BIND}
   EOT
   filename = "${path.module}/.env"
 }
@@ -99,11 +110,11 @@ resource "ibm_code_engine_secret" "ce_secret" {
   format     = "generic"
 
   data = {
-    SESSION_SECRET     = "my_secret"
-    MONGODB_URL        = ibm_resource_key.mongodb_key.credentials["connection.mongodb.composed.0"]
-    CERTIFICATE_BASE64 = ibm_resource_key.mongodb_key.credentials["connection.mongodb.certificate.certificate_base64"]
-    PORT               = "8080"
-    BIND               = "0.0.0.0"
+    SESSION_SECRET     = local.SESSION_SECRET
+    MONGODB_URL        = local.MONGODB_URL
+    CERTIFICATE_BASE64 = local.CERTIFICATE_BASE64
+    PORT               = local.PORT
+    BIND               = local.BIND
   }
 }
 
